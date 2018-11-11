@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Parametres" table="parametres" schema="public">
+        <id name="dureeviemdp" type="int">
+            <column name="dureeviemdp" />
+            <generator class="assigned" />
+        </id>
+        <property name="longueurmdp" type="java.lang.Integer">
+            <column name="longueurmdp" />
+        </property>
+        <property name="tentativemdp" type="java.lang.Integer">
+            <column name="tentativemdp" />
+        </property>
+        <property name="tempsinactivitesmdp" type="java.lang.Integer">
+            <column name="tempsinactivitesmdp" />
+        </property>
+        <property name="tauxtva" type="java.lang.Double">
+            <column name="tauxtva" precision="17" scale="17" />
+        </property>
+    </class>
+</hibernate-mapping>

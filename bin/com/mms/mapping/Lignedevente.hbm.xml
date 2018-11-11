@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Lignedevente" table="lignedevente" schema="public">
+        <composite-id name="id" class="com.mms.pojos.LignedeventeId">
+            <key-property name="numerovente" type="int">
+                <column name="numerovente" />
+            </key-property>
+            <key-property name="idlignevente" type="int">
+                <column name="idlignevente" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="produit" class="com.mms.pojos.Produit" fetch="select">
+            <column name="idproduit" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vente" class="com.mms.pojos.Vente" update="false" insert="false" fetch="select">
+            <column name="numerovente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="creditclient" class="com.mms.pojos.Creditclient" fetch="select">
+            <column name="idcreditclient" not-null="true" />
+        </many-to-one>
+        <property name="quantitelignevente" type="java.lang.Integer">
+            <column name="quantitelignevente" />
+        </property>
+        <property name="montantligneventeht" type="big_decimal">
+            <column name="montantligneventeht" precision="131089" scale="0" />
+        </property>
+        <property name="montantligneventettc" type="big_decimal">
+            <column name="montantligneventettc" precision="131089" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

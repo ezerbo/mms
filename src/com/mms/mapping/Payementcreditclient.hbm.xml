@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Payementcreditclient" table="payementcreditclient" schema="public">
+        <composite-id name="id" class="com.mms.pojos.PayementcreditclientId">
+            <key-property name="idcreditclient" type="int">
+                <column name="idcreditclient" />
+            </key-property>
+            <key-property name="idsession" type="int">
+                <column name="idsession" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="creditclient" class="com.mms.pojos.Creditclient" update="false" insert="false" fetch="select">
+            <column name="idcreditclient" not-null="true" />
+        </many-to-one>
+        <many-to-one name="session" class="com.mms.pojos.Session" update="false" insert="false" fetch="select">
+            <column name="idsession" not-null="true" />
+        </many-to-one>
+        <property name="datepayement" type="date">
+            <column name="datepayement" length="13" />
+        </property>
+        <property name="montant" type="big_decimal">
+            <column name="montant" precision="131089" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

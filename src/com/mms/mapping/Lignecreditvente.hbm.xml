@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Lignecreditvente" table="lignecreditvente" schema="public">
+        <composite-id name="id" class="com.mms.pojos.LignecreditventeId">
+            <key-property name="idcreditclient" type="int">
+                <column name="idcreditclient" />
+            </key-property>
+            <key-property name="idlignecredit" type="int">
+                <column name="idlignecredit" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="produit" class="com.mms.pojos.Produit" fetch="select">
+            <column name="idproduit" not-null="true" />
+        </many-to-one>
+        <many-to-one name="creditclient" class="com.mms.pojos.Creditclient" update="false" insert="false" fetch="select">
+            <column name="idcreditclient" not-null="true" />
+        </many-to-one>
+        <property name="quantitelignecredit" type="java.lang.Integer">
+            <column name="quantitelignecredit" />
+        </property>
+        <property name="montantlignecreditht" type="big_decimal">
+            <column name="montantlignecreditht" precision="131089" scale="0" />
+        </property>
+        <property name="montantlignecreditttc" type="big_decimal">
+            <column name="montantlignecreditttc" precision="131089" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

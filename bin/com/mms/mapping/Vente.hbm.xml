@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Vente" table="vente" schema="public">
+        <id name="numerovente" type="int">
+            <column name="numerovente" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="client" class="com.mms.pojos.Client" fetch="select">
+            <column name="idclient" not-null="true" />
+        </many-to-one>
+        <many-to-one name="session" class="com.mms.pojos.Session" fetch="select">
+            <column name="idsession" not-null="true" />
+        </many-to-one>
+        <many-to-one name="etat" class="com.mms.pojos.Etat" fetch="select">
+            <column name="idetat" not-null="true" />
+        </many-to-one>
+        <property name="montanttotalventeht" type="big_decimal">
+            <column name="montanttotalventeht" precision="131089" scale="0" />
+        </property>
+        <property name="montanttotalventettc" type="big_decimal">
+            <column name="montanttotalventettc" precision="131089" scale="0" />
+        </property>
+        <property name="datevente" type="date">
+            <column name="datevente" length="13" />
+        </property>
+        <set name="lignedeventes" inverse="true">
+            <key>
+                <column name="numerovente" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Lignedevente" />
+        </set>
+    </class>
+</hibernate-mapping>

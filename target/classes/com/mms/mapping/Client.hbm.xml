@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Client" table="client" schema="public">
+        <id name="idclient" type="int">
+            <column name="idclient" />
+            <generator class="assigned" />
+        </id>
+        <property name="raisonsocialeclient" type="string">
+            <column name="raisonsocialeclient" length="254" />
+        </property>
+        <property name="telephoneclient" type="string">
+            <column name="telephoneclient" length="254" />
+        </property>
+        <set name="representantclients" inverse="true">
+            <key>
+                <column name="idclient" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Representantclient" />
+        </set>
+        <set name="ventes" inverse="true">
+            <key>
+                <column name="idclient" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Vente" />
+        </set>
+        <set name="creditclients" inverse="true">
+            <key>
+                <column name="idclient" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Creditclient" />
+        </set>
+    </class>
+</hibernate-mapping>

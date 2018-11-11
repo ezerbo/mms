@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Etat" table="etat" schema="public">
+        <id name="idetat" type="int">
+            <column name="idetat" />
+            <generator class="assigned" />
+        </id>
+        <property name="libelleetat" type="string">
+            <column name="libelleetat" length="254" />
+        </property>
+        <set name="creditclients" inverse="true">
+            <key>
+                <column name="idetat" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Creditclient" />
+        </set>
+        <set name="ventes" inverse="true">
+            <key>
+                <column name="idetat" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Vente" />
+        </set>
+        <set name="creditfournisseurs" inverse="true">
+            <key>
+                <column name="idetat" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Creditfournisseur" />
+        </set>
+        <set name="achats" inverse="true">
+            <key>
+                <column name="idetat" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Achat" />
+        </set>
+    </class>
+</hibernate-mapping>

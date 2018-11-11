@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Lignecreditachat" table="lignecreditachat" schema="public">
+        <composite-id name="id" class="com.mms.pojos.LignecreditachatId">
+            <key-property name="idcreditfournisseur" type="int">
+                <column name="idcreditfournisseur" />
+            </key-property>
+            <key-property name="idligneachat" type="int">
+                <column name="idligneachat" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="produit" class="com.mms.pojos.Produit" fetch="select">
+            <column name="idproduit" not-null="true" />
+        </many-to-one>
+        <many-to-one name="creditfournisseur" class="com.mms.pojos.Creditfournisseur" update="false" insert="false" fetch="select">
+            <column name="idcreditfournisseur" not-null="true" />
+        </many-to-one>
+        <property name="quantiteligneachat" type="java.lang.Integer">
+            <column name="quantiteligneachat" />
+        </property>
+        <property name="montantligneachatht" type="big_decimal">
+            <column name="montantligneachatht" precision="131089" scale="0" />
+        </property>
+        <property name="montantligneachatttc" type="big_decimal">
+            <column name="montantligneachatttc" precision="131089" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

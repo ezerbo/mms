@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Session" table="session" schema="public">
+        <id name="idsession" type="int">
+            <column name="idsession" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="utilisateur" class="com.mms.pojos.Utilisateur" fetch="select">
+            <column name="idutilisateur" not-null="true" />
+        </many-to-one>
+        <property name="datedebutsession" type="date">
+            <column name="datedebutsession" length="13" />
+        </property>
+        <property name="datefinsession" type="date">
+            <column name="datefinsession" length="13" />
+        </property>
+        <property name="dureesession" type="java.lang.Integer">
+            <column name="dureesession" />
+        </property>
+        <set name="payementcreditclients" inverse="true">
+            <key>
+                <column name="idsession" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Payementcreditclient" />
+        </set>
+        <set name="depenses" inverse="true">
+            <key>
+                <column name="idsession" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Depense" />
+        </set>
+        <set name="achats" inverse="true">
+            <key>
+                <column name="idsession" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Achat" />
+        </set>
+        <set name="payementcreditfournisseurs" inverse="true">
+            <key>
+                <column name="idsession" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Payementcreditfournisseur" />
+        </set>
+        <set name="ventes" inverse="true">
+            <key>
+                <column name="idsession" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Vente" />
+        </set>
+        <set name="creditfournisseurs" inverse="true">
+            <key>
+                <column name="idsession" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Creditfournisseur" />
+        </set>
+        <set name="creditclients" inverse="true">
+            <key>
+                <column name="idsession" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Creditclient" />
+        </set>
+    </class>
+</hibernate-mapping>

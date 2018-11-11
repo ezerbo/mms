@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Utilisateur" table="utilisateur" schema="public">
+        <id name="idutilisateur" type="int">
+            <column name="idutilisateur" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="typeutilisateur" class="com.mms.pojos.Typeutilisateur" fetch="select">
+            <column name="idtypeutilisateur" not-null="true" />
+        </many-to-one>
+        <property name="nomutilisateur" type="string">
+            <column name="nomutilisateur" length="254" />
+        </property>
+        <property name="prenomutilisateur" type="string">
+            <column name="prenomutilisateur" length="254" />
+        </property>
+        <property name="loginutilisateur" type="string">
+            <column name="loginutilisateur" length="254" />
+        </property>
+        <property name="telephoneutilisateur" type="string">
+            <column name="telephoneutilisateur" length="254" />
+        </property>
+        <property name="dateembaucheutilisateur" type="date">
+            <column name="dateembaucheutilisateur" length="13" />
+        </property>
+        <property name="datedepartutilisateur" type="date">
+            <column name="datedepartutilisateur" length="13" />
+        </property>
+        <set name="sessions" inverse="true">
+            <key>
+                <column name="idutilisateur" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Session" />
+        </set>
+        <set name="motdepasses" inverse="true">
+            <key>
+                <column name="idutilisateur" not-null="true" />
+            </key>
+            <one-to-many class="com.mms.pojos.Motdepasse" />
+        </set>
+    </class>
+</hibernate-mapping>

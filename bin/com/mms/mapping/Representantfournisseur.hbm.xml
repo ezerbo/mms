@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.mms.pojos.Representantfournisseur" table="representantfournisseur" schema="public">
+        <id name="idrepresentantfournisseur" type="int">
+            <column name="idrepresentantfournisseur" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fournisseur" class="com.mms.pojos.Fournisseur" fetch="select">
+            <column name="idfournisseur" not-null="true" />
+        </many-to-one>
+        <property name="nomrepresentantfournisseur" type="string">
+            <column name="nomrepresentantfournisseur" length="254" />
+        </property>
+        <property name="prenomrepresentantfournisseur" type="string">
+            <column name="prenomrepresentantfournisseur" length="254" />
+        </property>
+        <property name="telrepresentantfournisseur" type="string">
+            <column name="telrepresentantfournisseur" length="254" />
+        </property>
+    </class>
+</hibernate-mapping>
