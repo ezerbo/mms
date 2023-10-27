@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import com.mms.pojos.Utilisateur;
-import com.mms.service.UtilisateurService;
+import com.mms.service.UserService;
 
 @SuppressWarnings("serial")
 public class InfoUtilisateur extends JDialog {
@@ -27,7 +27,7 @@ public class InfoUtilisateur extends JDialog {
 	private JPanel panelOuest;
 	private JPanel panelLabelLibelle;
 	private JPanel panelLabelValeur;
-	private UtilisateurService utilisateurService;
+	private UserService userService;
 	private Utilisateur utilisateur;
 	private JButton b_OK;
 	public InfoUtilisateur(String login) {
@@ -50,7 +50,7 @@ public class InfoUtilisateur extends JDialog {
 		panelCentre.setBorder(new TitledBorder(""));
 		panelLabelLibelle.setBackground(Color.WHITE);
 		panelLabelValeur.setBackground(Color.WHITE);
-		utilisateurService = new UtilisateurService();
+		userService = new UserService();
 		panelLabelLibelle.setLayout(new GridLayout(6, 1, 5, 5));
 		panelLabelLibelle.add(new JLabel("Nom : "));
 		panelLabelLibelle.add(new JLabel("Prenom : "));
@@ -60,7 +60,7 @@ public class InfoUtilisateur extends JDialog {
 		panelLabelLibelle.add(new JLabel("Statut : "));
 		panelCentre.add(panelLabelLibelle);
 		panelLabelValeur.setLayout(new GridLayout(6, 1, 5, 5));
-		utilisateur = utilisateurService.retourneUtilisateurParLogin(login);
+		utilisateur = userService.retourneUtilisateurParLogin(login);
 		if (utilisateur != null) {
 			panelLabelValeur.add(new JLabel(utilisateur.getNomutilisateur()));
 			panelLabelValeur

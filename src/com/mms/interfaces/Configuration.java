@@ -39,7 +39,7 @@ import com.mms.event.UtilisateurEvent;
 import com.mms.listener.UtilisateurListener;
 import com.mms.pojos.Parametres;
 import com.mms.pojos.Utilisateur;
-import com.mms.service.UtilisateurService;
+import com.mms.service.UserService;
 import com.mms.tablemodels.StatistiqueVenteTableModel;
 import com.mms.tablemodels.TableModelBilan;
 import com.mms.tablemodels.TableModelUtilisateur;
@@ -116,7 +116,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 	private JMenuItem itemSupprimerUtilisateur;
 	private JMenuItem itemActiviteUtilisateur;
 	private Utilisateur utilisateur;
-	private UtilisateurService utilisateurService;
+	private UserService userService;
 	String loginUtilisateur;
 
 	public Configuration(String loginUtilisateur) {
@@ -149,8 +149,8 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		tableModelUtilisateur = new TableModelUtilisateur();
 		statistiqueVenteTableModel = new StatistiqueVenteTableModel();
 		bilanTableModel = new TableModelBilan();
-		utilisateurService = new UtilisateurService();
-		utilisateur = utilisateurService.retourneUtilisateurParLogin(loginUtilisateur);
+		userService = new UserService();
+		utilisateur = userService.retourneUtilisateurParLogin(loginUtilisateur);
 		b_nouvelUtilisateur = new JButton("Nouvel Utilisateur");
 		b_activiteUtilisateur = new JButton("Activit\351s");
 		b_supprimerUtilisateur = new JButton("Supprimer");
@@ -429,7 +429,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (new UtilisateurService().miseAJourParametres(
+				if (new UserService().miseAJourParametres(
 						sliderLongueurMDP.getValue(),
 						sliderDureeVieMDP.getValue(),
 						(Integer) spinnerNbreTentative.getValue(),
@@ -452,7 +452,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Parametres parametres = new UtilisateurService().retourneParametres();
+				Parametres parametres = new UserService().retourneParametres();
 				spinnerNbreTentative.setValue(parametres.getTentativemdp());
 				spinnerTempsInactivite.setValue(parametres.getTempsinactivitesmdp());
 				sliderDureeVieMDP.setValue(parametres.getDureeviemdp());
@@ -517,7 +517,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 						"Confirmation de la suppression",
 						JOptionPane.YES_NO_OPTION);
 		if (confirmation == 0) {
-			if (new UtilisateurService()
+			if (new UserService()
 					.supprimerUtilisateur((String) tableUtilisateur.getValueAt(
 							tableUtilisateur.getSelectedRow(), COLONNELOGIN)) != 0) {
 				tableModelUtilisateur.netoyerListe();
@@ -537,7 +537,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 	}
 
 	public void afficheParametre() {
-		Parametres parametres = new UtilisateurService().retourneParametres();
+		Parametres parametres = new UserService().retourneParametres();
 		System.out.println("Duree : " + parametres.getDureeviemdp());
 		sliderDureeVieMDP.setValue(parametres.getDureeviemdp());
 		sliderLongueurMDP.setValue(parametres.getLongueurmdp());
@@ -546,14 +546,10 @@ public class Configuration extends JDialog implements UtilisateurListener {
 	}
 
 	public void afficherListeGestionnaire() {
-		/** affiche la liste des utilisateur */
-		LinkedList<Utilisateur> listeGestionnaire = new UtilisateurService()
+		LinkedList<Utilisateur> listeGestionnaire = new UserService()
 				.listeGestionnaire();
 		for (Utilisateur utilisateur : listeGestionnaire) {
-			
 				tableModelUtilisateur.ajouter(utilisateur);
-				/** Ajout de l'utilisateur courant a la table des utilisateurs */
-			
 		}
 	}
 }

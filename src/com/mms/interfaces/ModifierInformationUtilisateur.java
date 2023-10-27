@@ -21,7 +21,7 @@ import javax.swing.text.MaskFormatter;
 import com.mms.event.UtilisateurEvent;
 import com.mms.listener.UtilisateurListener;
 import com.mms.pojos.Utilisateur;
-import com.mms.service.UtilisateurService;
+import com.mms.service.UserService;
 
 @SuppressWarnings("serial")
 public class ModifierInformationUtilisateur extends JDialog {
@@ -39,7 +39,7 @@ public class ModifierInformationUtilisateur extends JDialog {
 	private JButton boutonFermer;
 	private JButton boutonModifier; 
 	String loginUtilisateur;
-	private UtilisateurService utilisateurService;
+	private UserService userService;
 	private Utilisateur utilisateur;
 	private MaskFormatter maskFormatter = null;
 	private ArrayList<UtilisateurListener> utilisateurListeners = new ArrayList<UtilisateurListener>();
@@ -68,8 +68,8 @@ public class ModifierInformationUtilisateur extends JDialog {
 	}
 	public ModifierInformationUtilisateur(String loginUtilisateur) {
 		this.loginUtilisateur = loginUtilisateur;
-		utilisateurService = new UtilisateurService();
-		utilisateur = utilisateurService.retourneUtilisateurParLogin(loginUtilisateur);
+		userService = new UserService();
+		utilisateur = userService.retourneUtilisateurParLogin(loginUtilisateur);
 		getContentPane().setLayout(new BorderLayout());
 		setTitle("Modifications des informations");
 		f_nom = new JTextField(20);
@@ -135,14 +135,14 @@ public class ModifierInformationUtilisateur extends JDialog {
 				if (f_nom.getText().equals("") || f_prenom.getText().equals("")|| f_login.getText().equals("")) {
 					JOptionPane.showMessageDialog(null,"Tous les champs sont obligatoires !!!", "Erreur",JOptionPane.ERROR_MESSAGE);
 				} else {
-						if (utilisateurService.ifLoginExiste(f_login.getText())) {
+						if (userService.ifLoginExiste(f_login.getText())) {
 							/*** Teste l'existence du login */
 							JOptionPane.showMessageDialog(null,"Ce login existe deja !!!", "Erreur",JOptionPane.ERROR_MESSAGE);
 						} else {
-							if (utilisateurService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()))) {
+							if (userService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()))) {
 									/*** enregistrement de l'utilisateur */
-									utilisateurService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()));
-									if (utilisateurService.modifierInformationUtilisateur(utilisateur.getIdutilisateur(),f_nom.getText(),f_prenom.getText(),f_telephone.getText().substring(8,f_telephone.getText().length()), f_login.getText()) != 0) {
+									userService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()));
+									if (userService.modifierInformationUtilisateur(utilisateur.getIdutilisateur(),f_nom.getText(),f_prenom.getText(),f_telephone.getText().substring(8,f_telephone.getText().length()), f_login.getText()) != 0) {
 										/**
 										 * Notification des ecouteurs de
 										 * l'evenement

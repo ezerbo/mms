@@ -32,7 +32,7 @@ import com.l2fprod.common.swing.JTaskPaneGroup;
 import com.mms.event.UtilisateurEvent;
 import com.mms.listener.UtilisateurListener;
 import com.mms.pojos.Utilisateur;
-import com.mms.service.UtilisateurService;
+import com.mms.service.UserService;
 import com.mms.util.Listener;
 
 @SuppressWarnings("serial")
@@ -98,18 +98,16 @@ public class InterfacePrincipale extends JFrame implements UtilisateurListener {
 	private NouveauProduit nouveauProduit;
 	private ListeProduit catalogue;
 	private String loginUtilisateur;
-	private UtilisateurService utilisateurService;
+	private UserService userService;
 	private Utilisateur utilisateur;
 	private ModifierInformationUtilisateur modifierInformationUtilisateur;
 
 	public InterfacePrincipale(String loginUtilisateur) {
 		super("Market Management System 2.0");
 		this.loginUtilisateur = loginUtilisateur;
-		utilisateurService = new UtilisateurService();
-		utilisateur = utilisateurService
-				.retourneUtilisateurParLogin(loginUtilisateur);
-		modifierInformationUtilisateur = new ModifierInformationUtilisateur(
-				loginUtilisateur);
+		userService = new UserService();
+		utilisateur = userService.retourneUtilisateurParLogin(loginUtilisateur);
+		modifierInformationUtilisateur = new ModifierInformationUtilisateur(loginUtilisateur);
 		modifierInformationUtilisateur.addUtilisateurListener(this);
 		getContentPane().setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -306,7 +304,7 @@ public class InterfacePrincipale extends JFrame implements UtilisateurListener {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
-				utilisateurService.mettreAJourSession(utilisateur
+				userService.mettreAJourSession(utilisateur
 						.getIdutilisateur());
 			}
 
@@ -410,7 +408,7 @@ public class InterfacePrincipale extends JFrame implements UtilisateurListener {
 		l_admin.setToolTipText("Panneau d'administration de l'application");
 		l_admin.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) {
-				new Authentification(utilisateur.getLoginutilisateur());
+				new AdminAuthUI(utilisateur.getLoginutilisateur());
 			}
 		});
 		l_vente.addMouseListener(new Listener(l_vente, (new StringBuilder(
@@ -519,7 +517,7 @@ public class InterfacePrincipale extends JFrame implements UtilisateurListener {
 		l_quitter.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) {
 				/*** mis a jour de la session de l'utilisateur connect� ****/
-				utilisateurService.mettreAJourSession(utilisateurService
+				userService.mettreAJourSession(userService
 						.retourneUtilisateurParLogin(loginUtilisateur)
 						.getIdutilisateur());
 				System.exit(0);
@@ -536,11 +534,11 @@ public class InterfacePrincipale extends JFrame implements UtilisateurListener {
 						"Voulez-vous vraiment vous deconnectez ?",
 						"Deconnexion", 0);
 				if (i == 0) {
-					utilisateurService.mettreAJourSession(utilisateurService
+					userService.mettreAJourSession(userService
 							.retourneUtilisateurParLogin(loginUtilisateur)
 							.getIdutilisateur());
 					dispose();
-					(new EcranDeConnexion()).setVisible(true);
+					(new LoginUI()).setVisible(true);
 				}
 			}
 		});
@@ -554,7 +552,7 @@ public class InterfacePrincipale extends JFrame implements UtilisateurListener {
 	@Override
 	public void ajouterUilisateur(UtilisateurEvent event) {
 		// TODO Auto-generated method stub
-		utilisateur = utilisateurService.retourneUtilisateurParId(utilisateur
+		utilisateur = userService.retourneUtilisateurParId(utilisateur
 				.getIdutilisateur());
 	}
 

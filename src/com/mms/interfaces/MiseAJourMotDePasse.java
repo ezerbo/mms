@@ -19,7 +19,7 @@ import javax.swing.border.TitledBorder;
 
 import com.mms.pojos.Parametres;
 import com.mms.pojos.Utilisateur;
-import com.mms.service.UtilisateurService;
+import com.mms.service.UserService;
 
 @SuppressWarnings("serial")
 public class MiseAJourMotDePasse extends JDialog {
@@ -33,7 +33,7 @@ public class MiseAJourMotDePasse extends JDialog {
 	private JPasswordField f_motDePasse;
 	private JPasswordField f_confirmation;
 	private JButton b_enregistrer;
-	private UtilisateurService utilisateurService;
+	private UserService userService;
 	private int idUtilisateur;
 
 	public MiseAJourMotDePasse(int idUtilisateur) {
@@ -49,7 +49,7 @@ public class MiseAJourMotDePasse extends JDialog {
 		
 		f_motDePasse = new JPasswordField(10);
 		f_confirmation = new JPasswordField(15);
-		utilisateurService = new UtilisateurService();
+		userService = new UserService();
 		getContentPane().setLayout(new BorderLayout());
 		panelLabel.setLayout(new GridLayout(2, 1,5,5));
 		panelLabel.add(new JLabel("Mot de passe : "));
@@ -97,19 +97,19 @@ public class MiseAJourMotDePasse extends JDialog {
 	public void changerMotDePasse(){
 		if(!f_motDePasse.getText().equals("")&&!f_confirmation.getText().equals("")){
 			/**modification du mot de passe***/
-			Parametres parametres = utilisateurService.retourneParametres();
+			Parametres parametres = userService.retourneParametres();
 			if(f_motDePasse.getText().length()>=parametres.getLongueurmdp()){/**si la longueur du mot de passe est acceptable**/
-				if(utilisateurService.egaliteMotDePasse(f_motDePasse.getText(), f_confirmation.getText())){
-					if(!utilisateurService.verifierExistenceMotDePasse(idUtilisateur, f_motDePasse.getText())){/**Verification de l'existence du mot de passe entré**/
+				if(userService.egaliteMotDePasse(f_motDePasse.getText(), f_confirmation.getText())){
+					if(!userService.verifierExistenceMotDePasse(idUtilisateur, f_motDePasse.getText())){/**Verification de l'existence du mot de passe entrï¿½**/
 						Utilisateur utilisateur = new Utilisateur();
 						utilisateur.setIdutilisateur(idUtilisateur);/***renseignement de l'identifiant de l'utillisateur*/
-						if(utilisateurService.creerNouveauMotDePasse(f_motDePasse.getText(),utilisateur)!=null){/***creation d'un nouveau mot de passe*/
-							JOptionPane.showMessageDialog(null, "Mot de passe changé avec succes !!","Succes de l'operation", JOptionPane.INFORMATION_MESSAGE);
+						if(userService.creerNouveauMotDePasse(f_motDePasse.getText(),utilisateur)!=null){/***creation d'un nouveau mot de passe*/
+							JOptionPane.showMessageDialog(null, "Mot de passe changï¿½ avec succes !!","Succes de l'operation", JOptionPane.INFORMATION_MESSAGE);
 							dispose();
 						}
 				
 					}else{
-						JOptionPane.showMessageDialog(null, "Ce mot de passe a deja été utilisé","Erreur",JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Ce mot de passe a deja ï¿½tï¿½ utilisï¿½","Erreur",JOptionPane.ERROR_MESSAGE);
 					}
 				}else{
 					JOptionPane.showMessageDialog(null, "Les mots de passe ne sont pas identiques","Erreur", JOptionPane.ERROR_MESSAGE);

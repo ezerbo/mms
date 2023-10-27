@@ -41,7 +41,7 @@ import com.mms.pojos.Session;
 import com.mms.pojos.Utilisateur;
 import com.mms.service.CategorieService;
 import com.mms.service.ClientService;
-import com.mms.service.UtilisateurService;
+import com.mms.service.UserService;
 import com.mms.service.VenteService;
 import com.mms.tablemodels.LigneDeVente;
 import com.mms.tablemodels.TableModelVente;
@@ -101,7 +101,7 @@ public class InterfaceVente extends JPanel
 	private CategorieService categorieService;
 	private ClientService clientService;
 	private VenteService venteService;
-	private UtilisateurService utilisateurService;
+	private UserService userService;
 	/******/
 	private String loginUtilisateur;
 	private static String VENTECOMPTANT = "COMPTANT";
@@ -142,22 +142,22 @@ public class InterfaceVente extends JPanel
 		comboListeClient = new JComboBox();
 		comboboxDesignation = new ComboBoxEditable();
 		b_nouveauClient = new JButton("Nouveau client");
-		b_apercuFacture = new JButton("Aperçu de la facture");
+		b_apercuFacture = new JButton("Aperï¿½u de la facture");
 		b_enregistrer = new JButton("Enregistrer");
 		itemSupprimerToutesLesLignes = new JMenuItem(
 				"Supprimer toutes les lignes");
 		itemSupprimerToutesLesLignes.setEnabled(false);
 		itemSupprimerLigneSelectionnee = new JMenuItem(
-				"Supprimer la ligne selectionnée");
+				"Supprimer la ligne selectionnï¿½e");
 		itemSupprimerLigneSelectionnee.setEnabled(false);
 		itemAjouterLigne = new JMenuItem("Ajouter une nouvelle ligne");
 		categorieService = new CategorieService();
 		clientService = new ClientService();
 		venteService = new VenteService();
-		utilisateurService = new UtilisateurService();
+		userService = new UserService();
 		nouveauClient = new NouveauClient();
 		venteComptant = new JCheckBox("Vente au comptant");
-		venteCredit = new JCheckBox("Vente à crédit");
+		venteCredit = new JCheckBox("Vente ï¿½ crï¿½dit");
 		/*****************/
 		nouveauClient.addClientListener(this);
 		tableModel = new TableModelVente();
@@ -331,7 +331,7 @@ public class InterfaceVente extends JPanel
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				tableModel.supprimerLigne(table.getSelectedRow());
-				/** le 1 est à remplacer avec l'index de l'element selectionné **/
+				/** le 1 est ï¿½ remplacer avec l'index de l'element selectionnï¿½ **/
 				if (tableModel.getRowCount() == 2) {
 					/**
 					 * si le nombre de ligne est egale a celui par defaut,on
@@ -417,7 +417,7 @@ public class InterfaceVente extends JPanel
 		table.getColumn("TOTAL T.T.C.").setCellEditor(new DefaultCellEditor(new TextFieldTable()));
 	}
 	/*****
-	 * Affiche la liste des clients Elle supprime toutes les entreés dans la
+	 * Affiche la liste des clients Elle supprime toutes les entreï¿½s dans la
 	 * liste selectionne le vide et renseigne les nouvelles valeurs
 	 *****/
 	private void afficheListeClient() {
@@ -440,8 +440,8 @@ public class InterfaceVente extends JPanel
 	 *            : prenom du client
 	 *****/
 	public int enregistrerVente(String etatVente, String nomClient,String prenomClient) {
-		Utilisateur utilisateur = utilisateurService.retourneUtilisateurParLogin(loginUtilisateur);
-		Session session = utilisateurService.derniereSessionUtilisateur(utilisateur.getIdutilisateur());
+		Utilisateur utilisateur = userService.retourneUtilisateurParLogin(loginUtilisateur);
+		Session session = userService.derniereSessionUtilisateur(utilisateur.getIdutilisateur());
 		return venteService.enregistreOperationDeVente(tableModel.getLigneDeVente(), session.getIdsession(),etatVente, Double.parseDouble(labelMontantTotalHT.getText()),Double.parseDouble(labelMontantTotalTVA.getText()), nomClient,prenomClient,Double.parseDouble(labelMontantTotalTTC.getText()));
 	}
 	public void effectuerVente() {
@@ -449,17 +449,17 @@ public class InterfaceVente extends JPanel
 		// TODO Auto-generated method stub
 		Client client = getClient((String) comboListeClient.getSelectedItem());
 		/***
-		 * Separation du nom et du prenom concatené dans comboListeClient
+		 * Separation du nom et du prenom concatenï¿½ dans comboListeClient
 		 **/
 		if (verifierListeVide()) {
 			/**** si la liste n'est pas totalement vide *****/
 			if (verifierLesLignesDeVente()) {
 				/**
-				 * si toutes les lignes sont correctement renseignées
+				 * si toutes les lignes sont correctement renseignï¿½es
 				 ***/
 				if (venteComptant.isSelected()) {
 					/**
-					 * Le composant vnenteComptant est selectionné,on effectue
+					 * Le composant vnenteComptant est selectionnï¿½,on effectue
 					 * donc la vente au comptant
 					 ***/
 					/***** Vente au comptant ********/
@@ -481,7 +481,7 @@ public class InterfaceVente extends JPanel
 						System.out.println("Echec de l'operation !!");
 					}
 				} else {
-					/******* Vente à credit ************/
+					/******* Vente ï¿½ credit ************/
 					if (enregistrerVente(VENTECREDIT, client.getNomClient(),client.getPrenomClient()) == VenteService.SUCCES_OPERATION) {
 						afficheLigne();
 						/**
@@ -504,7 +504,7 @@ public class InterfaceVente extends JPanel
 				JOptionPane.showMessageDialog(nouveauClient,"Verifier les differentes lignes de vente", "Erreur",JOptionPane.ERROR_MESSAGE);
 			}
 		} else {
-			JOptionPane.showMessageDialog(nouveauClient,"Aucune ligne de vente trouvée", "Erreur",JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(nouveauClient,"Aucune ligne de vente trouvï¿½e", "Erreur",JOptionPane.ERROR_MESSAGE);
 		}
 
 	}
@@ -516,7 +516,7 @@ public class InterfaceVente extends JPanel
 		}
 	}
 	/****
-	 * Est executée lorsqu'une nouvelle ligne de vente est definie elle calcule
+	 * Est executï¿½e lorsqu'une nouvelle ligne de vente est definie elle calcule
 	 * le montant total de la tva,le montant total ht et ttc de la vente
 	 * 
 	 * @param event
@@ -543,8 +543,8 @@ public class InterfaceVente extends JPanel
 		labelMontantTotalTTC.setText(montantTotalTTC + "");
 	}
 	/****
-	 * Permet d'obtenir le nom et le prenom du client selectionné dans la liste
-	 * des clients à partir de leur concatenation
+	 * Permet d'obtenir le nom et le prenom du client selectionnï¿½ dans la liste
+	 * des clients ï¿½ partir de leur concatenation
 	 * 
 	 * @param nom_prenom
 	 *            : represente la concatenation du nom et du prenom du client
@@ -567,7 +567,7 @@ public class InterfaceVente extends JPanel
 	/****
 	 * Methode affichant les deux ligne sur l'interface de vente au demarrage de
 	 * l'application et a l'enregistrement d'une vente. Elle efface d'abord
-	 * toutes les données de la JTable,affiche ensuite les deux ligne et enfin
+	 * toutes les donnï¿½es de la JTable,affiche ensuite les deux ligne et enfin
 	 * elle selectionne le vide dans la liste des clients
 	 *****/
 	private void afficheLigne() {
@@ -577,7 +577,7 @@ public class InterfaceVente extends JPanel
 		comboListeClient.setSelectedItem("");
 	}
 	/****
-	 * Verifie la validité de toutes les lignes de vente elle s'arrete a la
+	 * Verifie la validitï¿½ de toutes les lignes de vente elle s'arrete a la
 	 * rencontre de la premiere erreur
 	 *****/
 	private boolean verifierLesLignesDeVente() {
@@ -594,9 +594,9 @@ public class InterfaceVente extends JPanel
 		return returnValue;
 	}
 	/**
-	 * Verifie si aucune ligne de vente n'a été renseignée elle s'arrete si elle
-	 * rencontre une ligne de vente dont la designation ou la quantité a ete
-	 * renseignée
+	 * Verifie si aucune ligne de vente n'a ï¿½tï¿½ renseignï¿½e elle s'arrete si elle
+	 * rencontre une ligne de vente dont la designation ou la quantitï¿½ a ete
+	 * renseignï¿½e
 	 ***/
 	private boolean verifierListeVide() {
 		boolean returnValue = false;
@@ -617,13 +617,13 @@ public class InterfaceVente extends JPanel
 		labelMontantTotalTTC.setText("0.0");
 		labelMontantTotalTVA.setText("0.0");
 	}
-	/*** methode executée lorque l'envenement ClientEvent survient ***/
+	/*** methode executï¿½e lorque l'envenement ClientEvent survient ***/
 	@Override
 	public void ajouterClient(ClientEvent event) {
 		// TODO Auto-generated method stub
 		afficheListeClient();
 	}
-	/*** methode executée lorque l'envenement Produit survient ***/
+	/*** methode executï¿½e lorque l'envenement Produit survient ***/
 	@Override
 	public void ajouterProduit(ProduitEvent event) {
 		// TODO Auto-generated method stub

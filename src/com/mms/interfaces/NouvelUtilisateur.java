@@ -21,7 +21,7 @@ import javax.swing.text.MaskFormatter;
 import com.mms.event.UtilisateurEvent;
 import com.mms.listener.UtilisateurListener;
 import com.mms.pojos.Parametres;
-import com.mms.service.UtilisateurService;
+import com.mms.service.UserService;
 
 @SuppressWarnings("serial")
 public class NouvelUtilisateur extends JDialog {
@@ -42,7 +42,7 @@ public class NouvelUtilisateur extends JDialog {
 	private JPasswordField f_secondMotDePasse = new JPasswordField(20);
 	private JButton b_annuler = new JButton("Annuler");
 	private MaskFormatter maskFormatter = null;
-	private UtilisateurService utilisateurService = new UtilisateurService();
+	private UserService userService = new UserService();
 	private ArrayList<UtilisateurListener> utilisateurListeners = new ArrayList<UtilisateurListener>();
 
 	public synchronized void addUtilisateurListener(UtilisateurListener listener) {
@@ -128,7 +128,7 @@ public class NouvelUtilisateur extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				Parametres parametres = new UtilisateurService()
+				Parametres parametres = new UserService()
 						.retourneParametres();
 				if (f_nom.getText().equals("") || f_prenom.getText().equals("")|| f_login.getText().equals("")|| f_premierMotDePasse.getText().equals("")|| f_secondMotDePasse.getText().equals("")) {
 					JOptionPane.showMessageDialog(null,"Tous les champs sont obligatoires !!!", "Erreur",JOptionPane.ERROR_MESSAGE);
@@ -136,28 +136,28 @@ public class NouvelUtilisateur extends JDialog {
 					if (f_premierMotDePasse.getText().length() < parametres.getLongueurmdp()) {
 						JOptionPane.showMessageDialog(null,"Le mot de passe est trop court,entrez au moins "+ parametres.getLongueurmdp()+ " caracteres","longueur de mot de passe",JOptionPane.INFORMATION_MESSAGE);
 					} else {
-						if (utilisateurService.ifLoginExiste(f_login.getText())) {
+						if (userService.ifLoginExiste(f_login.getText())) {
 							/*** Teste l'existence du login */
 							JOptionPane.showMessageDialog(null,"Ce login existe deja !!!", "Erreur",JOptionPane.ERROR_MESSAGE);
 						} else {
-							if (utilisateurService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()))) {
-								if (utilisateurService.egaliteMotDePasse(f_premierMotDePasse.getText(),f_secondMotDePasse.getText())) {
+							if (userService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()))) {
+								if (userService.egaliteMotDePasse(f_premierMotDePasse.getText(),f_secondMotDePasse.getText())) {
 									/**
-									 * Verification de l'egalité des mots de
+									 * Verification de l'egalitï¿½ des mots de
 									 * passe
 									 **/
 									/*** enregistrement de l'utilisateur */
-									utilisateurService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()));
-									if (utilisateurService.creerUtiliateur(f_nom.getText(),f_prenom.getText(),f_telephone.getText().substring(8,f_telephone.getText().length()), f_login.getText(),f_premierMotDePasse.getText(),utilisateurService.TYPEUTILISATEUR) == 0) {
+									userService.verifierNumeroTelephone(f_telephone.getText().substring(8,f_telephone.getText().length()));
+									if (userService.creerUtiliateur(f_nom.getText(),f_prenom.getText(),f_telephone.getText().substring(8,f_telephone.getText().length()), f_login.getText(),f_premierMotDePasse.getText(), userService.TYPEUTILISATEUR) == 0) {
 										fireNouvelUtilisateur();
 										/**
 										 * Notification des ecouteurs de
 										 * l'evenement
 										 */
-										JOptionPane.showMessageDialog(null,"Utilisateur enregistré avec sucess !!!","succes de l'enregistrement",JOptionPane.INFORMATION_MESSAGE);
+										JOptionPane.showMessageDialog(null,"Utilisateur enregistrï¿½ avec sucess !!!","succes de l'enregistrement",JOptionPane.INFORMATION_MESSAGE);
 										dispose();
 									} else {
-										JOptionPane.showMessageDialog(null,"L'utilisateur n'a pas pu etre enregistré !!!","Erreur",JOptionPane.ERROR_MESSAGE);
+										JOptionPane.showMessageDialog(null,"L'utilisateur n'a pas pu etre enregistrï¿½ !!!","Erreur",JOptionPane.ERROR_MESSAGE);
 										/**
 										 * Echec de l'enregistrement de
 										 * l'utilisateur

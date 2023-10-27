@@ -43,7 +43,7 @@ CREATE TABLE achat (
 );
 
 
-ALTER TABLE public.achat OWNER TO zerbo;
+--ALTER TABLE public.achat OWNER TO zerbo;
 
 --
 -- Name: categorie; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -60,7 +60,7 @@ CREATE TABLE categorie (
 );
 
 
-ALTER TABLE public.categorie OWNER TO zerbo;
+--ALTER TABLE public.categorie OWNER TO zerbo;
 
 --
 -- Name: categorie_idcategorie_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -74,7 +74,7 @@ CREATE SEQUENCE categorie_idcategorie_seq
     CACHE 1;
 
 
-ALTER TABLE public.categorie_idcategorie_seq OWNER TO zerbo;
+--ALTER TABLE public.categorie_idcategorie_seq OWNER TO zerbo;
 
 --
 -- Name: categorie_idcategorie_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zerbo
@@ -95,7 +95,7 @@ CREATE SEQUENCE client_idclient_seq
     CACHE 1;
 
 
-ALTER TABLE public.client_idclient_seq OWNER TO zerbo;
+--ALTER TABLE public.client_idclient_seq OWNER TO zerbo;
 
 --
 -- Name: client; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -109,7 +109,7 @@ CREATE TABLE client (
 );
 
 
-ALTER TABLE public.client OWNER TO zerbo;
+--ALTER TABLE public.client OWNER TO zerbo;
 
 --
 -- Name: creditclient; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -127,7 +127,7 @@ CREATE TABLE creditclient (
 );
 
 
-ALTER TABLE public.creditclient OWNER TO zerbo;
+--ALTER TABLE public.creditclient OWNER TO zerbo;
 
 --
 -- Name: creditfournisseur; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -145,7 +145,7 @@ CREATE TABLE creditfournisseur (
 );
 
 
-ALTER TABLE public.creditfournisseur OWNER TO zerbo;
+--ALTER TABLE public.creditfournisseur OWNER TO zerbo;
 
 --
 -- Name: depense; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -159,7 +159,7 @@ CREATE TABLE depense (
 );
 
 
-ALTER TABLE public.depense OWNER TO zerbo;
+--ALTER TABLE public.depense OWNER TO zerbo;
 
 --
 -- Name: etat; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -171,7 +171,7 @@ CREATE TABLE etat (
 );
 
 
-ALTER TABLE public.etat OWNER TO zerbo;
+--ALTER TABLE public.etat OWNER TO zerbo;
 
 --
 -- Name: fournisseur_idfournisseur_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -185,7 +185,7 @@ CREATE SEQUENCE fournisseur_idfournisseur_seq
     CACHE 1;
 
 
-ALTER TABLE public.fournisseur_idfournisseur_seq OWNER TO zerbo;
+--ALTER TABLE public.fournisseur_idfournisseur_seq OWNER TO zerbo;
 
 --
 -- Name: fournisseur; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -199,7 +199,7 @@ CREATE TABLE fournisseur (
 );
 
 
-ALTER TABLE public.fournisseur OWNER TO zerbo;
+--ALTER TABLE public.fournisseur OWNER TO zerbo;
 
 --
 -- Name: lignecreditachat; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -215,7 +215,7 @@ CREATE TABLE lignecreditachat (
 );
 
 
-ALTER TABLE public.lignecreditachat OWNER TO zerbo;
+--ALTER TABLE public.lignecreditachat OWNER TO zerbo;
 
 --
 -- Name: lignecreditvente; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -231,7 +231,7 @@ CREATE TABLE lignecreditvente (
 );
 
 
-ALTER TABLE public.lignecreditvente OWNER TO zerbo;
+--ALTER TABLE public.lignecreditvente OWNER TO zerbo;
 
 --
 -- Name: lignedachat; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -247,7 +247,7 @@ CREATE TABLE lignedachat (
 );
 
 
-ALTER TABLE public.lignedachat OWNER TO zerbo;
+--ALTER TABLE public.lignedachat OWNER TO zerbo;
 
 --
 -- Name: lignedevente_idlignevente_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -261,7 +261,7 @@ CREATE SEQUENCE lignedevente_idlignevente_seq
     CACHE 1;
 
 
-ALTER TABLE public.lignedevente_idlignevente_seq OWNER TO zerbo;
+--ALTER TABLE public.lignedevente_idlignevente_seq OWNER TO zerbo;
 
 --
 -- Name: lignedevente; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -278,7 +278,7 @@ CREATE TABLE lignedevente (
 );
 
 
-ALTER TABLE public.lignedevente OWNER TO zerbo;
+--ALTER TABLE public.lignedevente OWNER TO zerbo;
 
 --
 -- Name: motdepasse; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -293,7 +293,7 @@ CREATE TABLE motdepasse (
 );
 
 
-ALTER TABLE public.motdepasse OWNER TO zerbo;
+--ALTER TABLE public.motdepasse OWNER TO zerbo;
 
 --
 -- Name: motdepasse_idmdp_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -307,7 +307,7 @@ CREATE SEQUENCE motdepasse_idmdp_seq
     CACHE 1;
 
 
-ALTER TABLE public.motdepasse_idmdp_seq OWNER TO zerbo;
+--ALTER TABLE public.motdepasse_idmdp_seq OWNER TO zerbo;
 
 --
 -- Name: motdepasse_idmdp_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zerbo
@@ -329,7 +329,7 @@ CREATE TABLE parametres (
 );
 
 
-ALTER TABLE public.parametres OWNER TO zerbo;
+--ALTER TABLE public.parametres OWNER TO zerbo;
 
 --
 -- Name: payementcreditclient; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -343,7 +343,7 @@ CREATE TABLE payementcreditclient (
 );
 
 
-ALTER TABLE public.payementcreditclient OWNER TO zerbo;
+--ALTER TABLE public.payementcreditclient OWNER TO zerbo;
 
 --
 -- Name: payementcreditfournisseur; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -357,7 +357,7 @@ CREATE TABLE payementcreditfournisseur (
 );
 
 
-ALTER TABLE public.payementcreditfournisseur OWNER TO zerbo;
+--ALTER TABLE public.payementcreditfournisseur OWNER TO zerbo;
 
 --
 -- Name: session; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -372,7 +372,7 @@ CREATE TABLE session (
 );
 
 
-ALTER TABLE public.session OWNER TO zerbo;
+--ALTER TABLE public.session OWNER TO zerbo;
 
 --
 -- Name: session_idsession_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -386,7 +386,7 @@ CREATE SEQUENCE session_idsession_seq
     CACHE 1;
 
 
-ALTER TABLE public.session_idsession_seq OWNER TO zerbo;
+--ALTER TABLE public.session_idsession_seq OWNER TO zerbo;
 
 --
 -- Name: session_idsession_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zerbo
@@ -405,7 +405,7 @@ CREATE TABLE typeutilisateur (
 );
 
 
-ALTER TABLE public.typeutilisateur OWNER TO zerbo;
+--ALTER TABLE public.typeutilisateur OWNER TO zerbo;
 
 --
 -- Name: typeutilisateur_idtypeutilisateur_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -419,7 +419,7 @@ CREATE SEQUENCE typeutilisateur_idtypeutilisateur_seq
     CACHE 1;
 
 
-ALTER TABLE public.typeutilisateur_idtypeutilisateur_seq OWNER TO zerbo;
+--ALTER TABLE public.typeutilisateur_idtypeutilisateur_seq OWNER TO zerbo;
 
 --
 -- Name: typeutilisateur_idtypeutilisateur_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zerbo
@@ -444,7 +444,7 @@ CREATE TABLE utilisateur (
 );
 
 
-ALTER TABLE public.utilisateur OWNER TO zerbo;
+--ALTER TABLE public.utilisateur OWNER TO zerbo;
 
 --
 -- Name: utilisateur_idutilisateur_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -458,7 +458,7 @@ CREATE SEQUENCE utilisateur_idutilisateur_seq
     CACHE 1;
 
 
-ALTER TABLE public.utilisateur_idutilisateur_seq OWNER TO zerbo;
+--ALTER TABLE public.utilisateur_idutilisateur_seq OWNER TO zerbo;
 
 --
 -- Name: utilisateur_idutilisateur_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zerbo
@@ -479,7 +479,7 @@ CREATE SEQUENCE vente_numerovente_seq
     CACHE 1;
 
 
-ALTER TABLE public.vente_numerovente_seq OWNER TO zerbo;
+--ALTER TABLE public.vente_numerovente_seq OWNER TO zerbo;
 
 --
 -- Name: vente; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -497,7 +497,7 @@ CREATE TABLE vente (
 );
 
 
-ALTER TABLE public.vente OWNER TO zerbo;
+--ALTER TABLE public.vente OWNER TO zerbo;
 
 --
 -- Name: idcategorie; Type: DEFAULT; Schema: public; Owner: zerbo

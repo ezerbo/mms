@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class Singleton {
 
 	private static String url = "jdbc:postgresql://localhost:5432/mms_database";
-	private static String user = "ezerbo";
+	private static String user = "postgres";
 	private static String password = "diallo1990";
 	private static Connection connection;
 

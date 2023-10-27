@@ -17,7 +17,7 @@ import com.mms.pojos.Typeutilisateur;
 import com.mms.pojos.Utilisateur;
 
 @SuppressWarnings("deprecation")
-public class UtilisateurService {
+public class UserService {
 	private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 	private MotDePasseDAO motDePasseDAO = new MotDePasseDAO();
 	private SessionDAO sessionDAO = new SessionDAO();
@@ -58,7 +58,7 @@ public class UtilisateurService {
 		return utilisateurDAO.update(utilisateur);
 	}
 	/***** 
-	 * Verifie si le mot de passe renseigné a deja été utilisé par l'utilisateur
+	 * Verifie si le mot de passe renseignï¿½ a deja ï¿½tï¿½ utilisï¿½ par l'utilisateur
 	 * courant
 	 ******/
 	public boolean verifierExistenceMotDePasse(int idUtilisateur,
@@ -66,7 +66,7 @@ public class UtilisateurService {
 		return motDePasseDAO.verifierExistenceMotDePasse(idUtilisateur,
 				motDePasse);
 	}
-	/**** Crée un nouvel utilisateur dans le systeme *******/
+	/**** Crï¿½e un nouvel utilisateur dans le systeme *******/
 	public int creerUtiliateur(String nomUtilisateur, String prenomUtilisateur,
 			String telephoneUtilisateur, String loginUtilisateur,
 			String valeurMotDePasse, String statutUtilisateur) {
@@ -96,7 +96,7 @@ public class UtilisateurService {
 	/***
 	 * Permet la creation d'un nouveau mot de passe Prend en parametre la valeur
 	 * du mot de passe a enregistrer et l'utilisateur pour qui il doit etre
-	 * enregistré
+	 * enregistrï¿½
 	 **/
 	public Motdepasse creerNouveauMotDePasse(String valeurMotDePasse,
 			Utilisateur utilisateur) {
@@ -105,13 +105,13 @@ public class UtilisateurService {
 		motDePasse.setValeurmdp(passwordEncryptor.encryptPassword(valeurMotDePasse));
 		Date date = new java.util.Date();
 		motDePasse.setDatecreationmdp(new java.util.Date());
-		date.setHours(24 * new UtilisateurService().retourneParametres().getDureeviemdp());
+		date.setHours(24 * new UserService().retourneParametres().getDureeviemdp());
 		/*** renseignement de la duree de validite du mot de passe ******/
 		motDePasse.setDatevaliditemdp(date);
 		motDePasse.setUtilisateur(utilisateur);
 		return motDePasse = new MotDePasseDAO().create(motDePasse);
 	}
-	/**** Retourne la liste des utilisateur(excepté l'administrateur) ****/
+	/**** Retourne la liste des utilisateur(exceptï¿½ l'administrateur) ****/
 	public LinkedList<Utilisateur> listeGestionnaire() {
 		return (LinkedList<Utilisateur>) utilisateurDAO.findAll();
 	}
@@ -144,7 +144,7 @@ public class UtilisateurService {
 	}
 	/***
 	 * Effectue la suppression de tous les mots de passe d'un utilisateur
-	 * lorsque celui-ci est supprimé su systeme
+	 * lorsque celui-ci est supprimï¿½ su systeme
 	 ***/
 	public int supprimerMotDePasse(String login) {
 		Motdepasse motDePasse = new Motdepasse();
@@ -152,7 +152,7 @@ public class UtilisateurService {
 		return new MotDePasseDAO().delete(motDePasse);
 	}
 	/**
-	 * Effectue la mise a jour des parametres lorsqu'ils sont modifiés par
+	 * Effectue la mise a jour des parametres lorsqu'ils sont modifiï¿½s par
 	 * l'administrateur
 	 **/
 	public int miseAJourParametres(int longueurMDP, int dureeVieMDP,int nombreTentative, int tempsInactivite) {
@@ -180,12 +180,12 @@ public class UtilisateurService {
 			BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 			if (passwordEncryptor.checkPassword(motDePasseSaisi,motDePasseCourant)) {
 				/**
-				 * Comparaison du mot de passe chiffé et du mot de passe saisi
+				 * Comparaison du mot de passe chiffï¿½ et du mot de passe saisi
 				 * par l'utilisateur
 				 */
 				Date dateValidite = motDePasse.getDatevaliditemdp();
 				/**
-				 * Recuperation de la date de validité du mot de passe de
+				 * Recuperation de la date de validitï¿½ du mot de passe de
 				 * l'utilisateur
 				 */
 				Date dateCourante = new java.util.Date();
