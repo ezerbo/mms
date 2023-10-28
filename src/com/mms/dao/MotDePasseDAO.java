@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Motdepasse;
-import com.mms.pojos.Utilisateur;
+import com.mms.domain.Motdepasse;
+import com.mms.domain.Utilisateur;
 
 public class MotDePasseDAO extends DaoGenerique<Motdepasse> {
 

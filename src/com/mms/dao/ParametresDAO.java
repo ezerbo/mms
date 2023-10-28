@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Parametres;
+import com.mms.domain.Parametres;
 
 public class ParametresDAO extends DaoGenerique<Parametres> {
 

@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Etat" table="etat" schema="public">
+    <class name="com.mms.domain.Etat" table="etat" schema="public">
         <id name="idetat" type="int">
             <column name="idetat" />
             <generator class="assigned" />
@@ -15,25 +15,25 @@
             <key>
                 <column name="idetat" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Creditclient" />
+            <one-to-many class="com.mms.domain.Creditclient" />
         </set>
         <set name="ventes" inverse="true">
             <key>
                 <column name="idetat" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Vente" />
+            <one-to-many class="com.mms.domain.Vente" />
         </set>
         <set name="creditfournisseurs" inverse="true">
             <key>
                 <column name="idetat" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Creditfournisseur" />
+            <one-to-many class="com.mms.domain.Creditfournisseur" />
         </set>
         <set name="achats" inverse="true">
             <key>
                 <column name="idetat" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Achat" />
+            <one-to-many class="com.mms.domain.Achat" />
         </set>
     </class>
 </hibernate-mapping>

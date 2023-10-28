@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Client;
+import com.mms.domain.Client;
 
 public class ClientDAO extends DaoGenerique<Client> {
 

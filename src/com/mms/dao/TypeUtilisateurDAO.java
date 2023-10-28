@@ -2,7 +2,7 @@ package com.mms.dao;
 
 import java.util.List;
 
-import com.mms.pojos.Typeutilisateur;
+import com.mms.domain.Typeutilisateur;
 
 public class TypeUtilisateurDAO extends DaoGenerique<Typeutilisateur> {
 

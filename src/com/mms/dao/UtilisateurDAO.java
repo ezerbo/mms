@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Typeutilisateur;
-import com.mms.pojos.Utilisateur;
+import com.mms.domain.Typeutilisateur;
+import com.mms.domain.Utilisateur;
 
 public class UtilisateurDAO extends DaoGenerique<Utilisateur> {
 

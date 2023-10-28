@@ -4,7 +4,7 @@ package com.mms.service;
 import java.util.LinkedList;
 
 import com.mms.dao.FournisseurDAO;
-import com.mms.pojos.Fournisseur;
+import com.mms.domain.Fournisseur;
 
 public class FournisseurService {
 	private FournisseurDAO fournisseurDAO = new FournisseurDAO();
@@ -47,7 +47,7 @@ public class FournisseurService {
 	 * @param telephoneFournisseur
 	 *            : nouveau numero de telephone du fournissseur
 	 * @param ancienNumeroDeTelephone
-	 *            : l'anceien numero de telephone du fournisseur à partir duquel
+	 *            : l'anceien numero de telephone du fournisseur ï¿½ partir duquel
 	 *            on retrouvera les anciennes informations
 	 **/
 	public int misAJourFournisseur(String nomFournisseur,

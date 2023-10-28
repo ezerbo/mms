@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.mms.pojos.Session;
+import com.mms.domain.Session;
 
 public class SessionDAO extends DaoGenerique<Session> {
 

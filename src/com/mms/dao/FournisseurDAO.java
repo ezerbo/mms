@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Fournisseur;
+import com.mms.domain.Fournisseur;
 
 public class FournisseurDAO extends DaoGenerique<Fournisseur> {
 

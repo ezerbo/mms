@@ -9,14 +9,14 @@ import com.mms.dao.EtatDAO;
 import com.mms.dao.LigneVenteDAO;
 import com.mms.dao.ParametresDAO;
 import com.mms.dao.VenteDAO;
-import com.mms.pojos.Categorie;
-import com.mms.pojos.Client;
-import com.mms.pojos.Etat;
-import com.mms.pojos.Lignedevente;
-import com.mms.pojos.Parametres;
-import com.mms.pojos.Session;
-import com.mms.pojos.Vente;
-import com.mms.tablemodels.LigneDeVente;
+import com.mms.domain.Categorie;
+import com.mms.domain.Client;
+import com.mms.domain.Etat;
+import com.mms.domain.Lignedevente;
+import com.mms.domain.Parametres;
+import com.mms.domain.Session;
+import com.mms.domain.Vente;
+import com.mms.interfaces.tablemodels.LigneDeVente;
 
 public class VenteService {
 	private CategorieService categorieService = new CategorieService();
@@ -50,7 +50,7 @@ public class VenteService {
 	 * Calcul le montant TVA
 	 * 
 	 * @param totalHt
-	 *            : montant hors taxe sur lequel le taux TVA est appliqué
+	 *            : montant hors taxe sur lequel le taux TVA est appliquï¿½
 	 */
 	public Double calculMontantTva(Double totalHt) {
 		parametres = parametresDAO.findAll().get(0);
@@ -61,9 +61,9 @@ public class VenteService {
 	 * Calcul le montant TTC
 	 * 
 	 * @param montantHt
-	 *            : correspond au montant calculé par calculTotalHt()
+	 *            : correspond au montant calculï¿½ par calculTotalHt()
 	 * @param montantTva
-	 *            : correspond au montant calculé par calculMontantTva
+	 *            : correspond au montant calculï¿½ par calculMontantTva
 	 */
 	public Double calculTotalTtc(Double montantHt, Double montantTva) {
 		return montantHt + montantTva;
@@ -74,10 +74,6 @@ public class VenteService {
 	 * @param idSession
 	 *            : identifiant de la session de l'utilisateur effectuant
 	 *            l'operation
-	 * @param nomClient
-	 *            : nom du client a qui le produit de est vendu
-	 * @param prenomClient
-	 *            : prenom du client a qui le produit est vendu
 	 * @param etatVente
 	 *            : etat de la vente ['comptant','credit']
 	 * @param montantTotalVenteHt
@@ -91,9 +87,9 @@ public class VenteService {
 			String etatVente, double montantTotalVenteHt,
 			double montantTotalVenteTva, double montantTotalVenteTtc) {
 		vente = new Vente();
-		vente.setMontanttotalventeht(montantTotalVenteHt);
+		vente.setMontantTotalVenteHt(montantTotalVenteHt);
 		vente.setMontantTotalVenteTva(montantTotalVenteTva);
-		vente.setMontanttotalventettc(montantTotalVenteTtc);
+		vente.setMontantTotalVenteTtc(montantTotalVenteTtc);
 		session = new Session();
 		session.setIdsession(idSession);
 		vente.setSession(session);
@@ -143,7 +139,7 @@ public class VenteService {
 	 * Enregistre l'operation de vente
 	 * 
 	 * @param listeDeVente
-	 *            : liste chainée des ventes provenant de la JTable principale
+	 *            : liste chainï¿½e des ventes provenant de la JTable principale
 	 *            de vente
 	 * @param idSession
 	 *            : id de la session de l'utilisateur realisant l'operation
@@ -188,7 +184,7 @@ public class VenteService {
 							Double.parseDouble(ligneCourante.getMontantTva()),
 							Double.parseDouble(ligneCourante.getPrixGlobalTtc()));
 					if (ligneEnregistre != null) {
-						/** mis à jour du stock ***/
+						/** mis ï¿½ jour du stock ***/
 						categorie = categorieService.getCategorie(ligneCourante
 								.getDesignation());
 						/***
@@ -200,7 +196,7 @@ public class VenteService {
 						/*** Calcule de la quantite devant rester en stock ****/
 						categorieService.misAJourStock(quantiteStock,
 								ligneCourante.getDesignation());
-						/*** Mis à jour du stock ***/
+						/*** Mis ï¿½ jour du stock ***/
 					} else {
 						returnValue = ECHEC_OPERATION;
 						// echec de l'operation d'enregistrement de la ligne de
@@ -215,7 +211,7 @@ public class VenteService {
 	public LinkedList<Lignedevente> retourneHistoriqueVente(Date dateDebut,Date dateFin) {
 		return (LinkedList<Lignedevente>) ligneVenteDAO.findAll(dateDebut,dateFin);
 	}
-	/***Permet de retourner les lignes de ventes enregistrées dans un intervalle de temps
+	/***Permet de retourner les lignes de ventes enregistrï¿½es dans un intervalle de temps
 	 * @param dateDebut: date de debut de l'intervalle
 	 * @param dateFin : date de fin de l'intervalle
 	 * **/

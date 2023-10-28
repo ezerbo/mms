@@ -3,37 +3,37 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Produit" table="produit" schema="public">
+    <class name="com.mms.domain.Produit" table="produit" schema="public">
         <id name="idproduit" type="int">
             <column name="idproduit" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="categorie" class="com.mms.pojos.Categorie" fetch="select">
+        <many-to-one name="categorie" class="com.mms.domain.Categorie" fetch="select">
             <column name="idcategorie" not-null="true" />
         </many-to-one>
         <set name="lignecreditventes" inverse="true">
             <key>
                 <column name="idproduit" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignecreditvente" />
+            <one-to-many class="com.mms.domain.Lignecreditvente" />
         </set>
         <set name="lignecreditachats" inverse="true">
             <key>
                 <column name="idproduit" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignecreditachat" />
+            <one-to-many class="com.mms.domain.Lignecreditachat" />
         </set>
         <set name="lignedeventes" inverse="true">
             <key>
                 <column name="idproduit" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignedevente" />
+            <one-to-many class="com.mms.domain.Lignedevente" />
         </set>
         <set name="lignedachats" inverse="true">
             <key>
                 <column name="idproduit" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignedachat" />
+            <one-to-many class="com.mms.domain.Lignedachat" />
         </set>
     </class>
 </hibernate-mapping>

@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Categorie;
-import com.mms.pojos.Produit;
+import com.mms.domain.Categorie;
+import com.mms.domain.Produit;
 
 public class ProduitDAO extends DaoGenerique<Produit> {
 

@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Categorie;
+import com.mms.domain.Categorie;
 
 public class CategorieDAO extends DaoGenerique<Categorie> {
 

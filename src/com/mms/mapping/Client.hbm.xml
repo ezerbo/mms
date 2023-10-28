@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Client" table="client" schema="public">
+    <class name="com.mms.domain.Client" table="client" schema="public">
         <id name="idclient" type="int">
             <column name="idclient" />
             <generator class="assigned" />
@@ -18,19 +18,19 @@
             <key>
                 <column name="idclient" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Representantclient" />
+            <one-to-many class="com.mms.domain.Representantclient" />
         </set>
         <set name="ventes" inverse="true">
             <key>
                 <column name="idclient" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Vente" />
+            <one-to-many class="com.mms.domain.Vente" />
         </set>
         <set name="creditclients" inverse="true">
             <key>
                 <column name="idclient" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Creditclient" />
+            <one-to-many class="com.mms.domain.Creditclient" />
         </set>
     </class>
 </hibernate-mapping>

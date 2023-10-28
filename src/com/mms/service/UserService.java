@@ -10,17 +10,18 @@ import com.mms.dao.MotDePasseDAO;
 import com.mms.dao.ParametresDAO;
 import com.mms.dao.SessionDAO;
 import com.mms.dao.UtilisateurDAO;
-import com.mms.pojos.Motdepasse;
-import com.mms.pojos.Parametres;
-import com.mms.pojos.Session;
-import com.mms.pojos.Typeutilisateur;
-import com.mms.pojos.Utilisateur;
+import com.mms.domain.Motdepasse;
+import com.mms.domain.Parametres;
+import com.mms.domain.Session;
+import com.mms.domain.Typeutilisateur;
+import com.mms.domain.Utilisateur;
 
-@SuppressWarnings("deprecation")
 public class UserService {
 	private UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
 	private MotDePasseDAO motDePasseDAO = new MotDePasseDAO();
 	private SessionDAO sessionDAO = new SessionDAO();
+
+	private static Utilisateur loggedInUser;
 	private Utilisateur utilisateur;
 	private static int ADMINISTRATEUR = 1;
 	private static int GESTIONNAIRE = 2;
@@ -116,7 +117,7 @@ public class UserService {
 		return (LinkedList<Utilisateur>) utilisateurDAO.findAll();
 	}
 	/*** retourne les information concernant l'administrateur */
-	public boolean findAdmin() {
+	public boolean isAdminAccountCreated() {
 		return utilisateurDAO.ifAdminExiste();
 	}
 	/** Realise la suppression d'un utilisateur ***/
@@ -261,5 +262,15 @@ public class UserService {
 	}
 	
 	public static void main(String[] args) {}
+
+	public static Utilisateur getLoggedInUser() {
+		if (loggedInUser != null) {
+			return loggedInUser;
+		}
+		loggedInUser = new Utilisateur();
+		loggedInUser.setLoginutilisateur("ezerbo"); // TODO get from login context & fetch from db
+		loggedInUser.setIdutilisateur(1);
+		return loggedInUser;
+	}
 
 }

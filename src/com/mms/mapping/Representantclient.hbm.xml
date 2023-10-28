@@ -3,12 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Representantclient" table="representantclient" schema="public">
+    <class name="com.mms.domain.Representantclient" table="representantclient" schema="public">
         <id name="idrepresentantclient" type="int">
             <column name="idrepresentantclient" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="client" class="com.mms.pojos.Client" fetch="select">
+        <many-to-one name="client" class="com.mms.domain.Client" fetch="select">
             <column name="idclient" not-null="true" />
         </many-to-one>
         <property name="nomrepresentantclient" type="string">

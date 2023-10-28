@@ -8,9 +8,9 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Categorie;
-import com.mms.pojos.Lignedevente;
-import com.mms.pojos.Vente;
+import com.mms.domain.Categorie;
+import com.mms.domain.Lignedevente;
+import com.mms.domain.Vente;
 
 public class LigneVenteDAO extends DaoGenerique<Lignedevente> {
 

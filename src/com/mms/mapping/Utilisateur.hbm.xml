@@ -3,12 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Utilisateur" table="utilisateur" schema="public">
+    <class name="com.mms.domain.Utilisateur" table="utilisateur" schema="public">
         <id name="idutilisateur" type="int">
             <column name="idutilisateur" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="typeutilisateur" class="com.mms.pojos.Typeutilisateur" fetch="select">
+        <many-to-one name="typeutilisateur" class="com.mms.domain.Typeutilisateur" fetch="select">
             <column name="idtypeutilisateur" not-null="true" />
         </many-to-one>
         <property name="nomutilisateur" type="string">
@@ -33,13 +33,13 @@
             <key>
                 <column name="idutilisateur" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Session" />
+            <one-to-many class="com.mms.domain.Session" />
         </set>
         <set name="motdepasses" inverse="true">
             <key>
                 <column name="idutilisateur" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Motdepasse" />
+            <one-to-many class="com.mms.domain.Motdepasse" />
         </set>
     </class>
 </hibernate-mapping>

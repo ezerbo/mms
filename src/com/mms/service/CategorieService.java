@@ -3,7 +3,7 @@ package com.mms.service;
 import java.util.LinkedList;
 
 import com.mms.dao.CategorieDAO;
-import com.mms.pojos.Categorie;
+import com.mms.domain.Categorie;
 
 public class CategorieService {
 	private CategorieDAO categorieDAO = new CategorieDAO();

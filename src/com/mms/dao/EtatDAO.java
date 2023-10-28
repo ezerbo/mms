@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Etat;
+import com.mms.domain.Etat;
 
 public class EtatDAO extends DaoGenerique<Etat> {
 

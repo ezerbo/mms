@@ -3,18 +3,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Achat" table="achat" schema="public">
+    <class name="com.mms.domain.Achat" table="achat" schema="public">
         <id name="numeroachat" type="int">
             <column name="numeroachat" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="fournisseur" class="com.mms.pojos.Fournisseur" fetch="select">
+        <many-to-one name="fournisseur" class="com.mms.domain.Fournisseur" fetch="select">
             <column name="idfournisseur" not-null="true" />
         </many-to-one>
-        <many-to-one name="session" class="com.mms.pojos.Session" fetch="select">
+        <many-to-one name="session" class="com.mms.domain.Session" fetch="select">
             <column name="idsession" not-null="true" />
         </many-to-one>
-        <many-to-one name="etat" class="com.mms.pojos.Etat" fetch="select">
+        <many-to-one name="etat" class="com.mms.domain.Etat" fetch="select">
             <column name="idetat" not-null="true" />
         </many-to-one>
         <property name="montanttotalachatht" type="big_decimal">
@@ -30,7 +30,7 @@
             <key>
                 <column name="numeroachat" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignedachat" />
+            <one-to-many class="com.mms.domain.Lignedachat" />
         </set>
     </class>
 </hibernate-mapping>

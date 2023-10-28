@@ -1,8 +1,8 @@
 package com.mms.service;
 
 import com.mms.dao.ProduitDAO;
-import com.mms.pojos.Categorie;
-import com.mms.pojos.Produit;
+import com.mms.domain.Categorie;
+import com.mms.domain.Produit;
 
 public class ProduitService {
 	private ProduitDAO produitDAO = new ProduitDAO();

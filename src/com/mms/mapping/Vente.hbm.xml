@@ -3,24 +3,24 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Vente" table="vente" schema="public">
+    <class name="com.mms.domain.Vente" table="vente" schema="public">
         <id name="numerovente" type="int">
             <column name="numerovente" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="client" class="com.mms.pojos.Client" fetch="select">
+        <many-to-one name="client" class="com.mms.domain.Client" fetch="select">
             <column name="idclient" not-null="true" />
         </many-to-one>
-        <many-to-one name="session" class="com.mms.pojos.Session" fetch="select">
+        <many-to-one name="session" class="com.mms.domain.Session" fetch="select">
             <column name="idsession" not-null="true" />
         </many-to-one>
-        <many-to-one name="etat" class="com.mms.pojos.Etat" fetch="select">
+        <many-to-one name="etat" class="com.mms.domain.Etat" fetch="select">
             <column name="idetat" not-null="true" />
         </many-to-one>
-        <property name="montanttotalventeht" type="big_decimal">
+        <property name="montantTotalVenteHt" type="big_decimal">
             <column name="montanttotalventeht" precision="131089" scale="0" />
         </property>
-        <property name="montanttotalventettc" type="big_decimal">
+        <property name="montantTotalVenteTtc" type="big_decimal">
             <column name="montanttotalventettc" precision="131089" scale="0" />
         </property>
         <property name="datevente" type="date">
@@ -30,7 +30,7 @@
             <key>
                 <column name="numerovente" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignedevente" />
+            <one-to-many class="com.mms.domain.Lignedevente" />
         </set>
     </class>
 </hibernate-mapping>

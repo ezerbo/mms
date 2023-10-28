@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import javax.swing.JEditorPane;
 import javax.swing.text.html.HTMLEditorKit;
 
-import com.mms.tablemodels.LigneDeVente;
+import com.mms.interfaces.tablemodels.LigneDeVente;
 
 @SuppressWarnings("serial")
 public class ApercuImpression extends JEditorPane {

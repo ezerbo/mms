@@ -2,8 +2,8 @@ package com.mms.event;
 
 import java.util.EventObject;
 
-import com.mms.interfaces.ModifierProduit;
-import com.mms.interfaces.NouveauProduit;
+import com.mms.interfaces.product.ModifierProduit;
+import com.mms.interfaces.product.NouveauProduit;
 
 @SuppressWarnings("serial")
 public class ProduitEvent extends EventObject {

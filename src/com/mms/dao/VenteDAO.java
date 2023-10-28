@@ -7,16 +7,15 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.mms.pojos.Client;
-import com.mms.pojos.Etat;
-import com.mms.pojos.Session;
-import com.mms.pojos.Vente;
+import com.mms.domain.Client;
+import com.mms.domain.Etat;
+import com.mms.domain.Session;
+import com.mms.domain.Vente;
 
 public class VenteDAO extends DaoGenerique<Vente> {
 
 	@Override
 	public Vente create(Vente vente) {
-		// TODO Auto-generated method stub
 		int testeValue = 0;
 		try {
 			PreparedStatement prepare = connection
@@ -24,14 +23,13 @@ public class VenteDAO extends DaoGenerique<Vente> {
 			prepare.setInt(1, vente.getSession().getIdsession());
 			prepare.setInt(2, vente.getEtat().getIdetat());
 			prepare.setInt(3, vente.getClient().getIdclient());
-			prepare.setDouble(4, vente.getMontanttotalventeht());
+			prepare.setDouble(4, vente.getMontantTotalVenteHt());
 			prepare.setDouble(5, vente.getMontantTotalVenteTva());
-			prepare.setDouble(6, vente.getMontanttotalventettc());
+			prepare.setDouble(6, vente.getMontantTotalVenteTtc());
 			prepare.setDate(7,
 					new java.sql.Date(vente.getDatevente().getTime()));
 			testeValue = prepare.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (testeValue == 0)
@@ -42,7 +40,6 @@ public class VenteDAO extends DaoGenerique<Vente> {
 
 	@Override
 	public int delete(Vente vente) {
-		// TODO Auto-generated method stub
 		int testeValue = 0;
 		try {
 			PreparedStatement prepare = connection
@@ -50,7 +47,6 @@ public class VenteDAO extends DaoGenerique<Vente> {
 			prepare.setInt(1, vente.getNumerovente());
 			testeValue = prepare.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return testeValue;
@@ -58,19 +54,17 @@ public class VenteDAO extends DaoGenerique<Vente> {
 
 	@Override
 	public int update(Vente vente) {
-		// TODO Auto-generated method stub
 		int returnValue = 0;
 		try {
 			PreparedStatement prepare = connection
 					.prepareStatement("UPDATE vente SET idclient = ?,montanttotalventeht = ?,montanttotalventetva = ?,montanttotalttc = ? WHERE numerovente = ?");
 			prepare.setInt(1, vente.getClient().getIdclient());
-			prepare.setDouble(2, vente.getMontanttotalventeht());
+			prepare.setDouble(2, vente.getMontantTotalVenteHt());
 			prepare.setDouble(3, vente.getMontantTotalVenteTva());
-			prepare.setDouble(4, vente.getMontanttotalventettc());
+			prepare.setDouble(4, vente.getMontantTotalVenteTtc());
 			prepare.setInt(5, vente.getNumerovente());
 			returnValue = prepare.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return returnValue;
@@ -78,17 +72,15 @@ public class VenteDAO extends DaoGenerique<Vente> {
 
 	@Override
 	public Vente findByName(String name) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public List<Vente> findAll() {
-		// TODO Auto-generated method stub
-		List<Vente> listeVente = new LinkedList<Vente>();
-		Vente vente = null;
-		Client client = null;
-		Etat etat = null;
-		Session session = null;
+		List<Vente> listeVente = new LinkedList<>();
+		Vente vente;
+		Client client;
+		Etat etat;
+		Session session;
 		try {
 			Statement statement = connection
 					.createStatement();
@@ -104,16 +96,14 @@ public class VenteDAO extends DaoGenerique<Vente> {
 				session = new Session();
 				session.setIdsession(resultat.getInt("idsession"));
 				vente.setSession(session);
-				vente.setMontanttotalventeht(resultat.getDouble("montanttotalventeht"));
+				vente.setMontantTotalVenteHt(resultat.getDouble("montanttotalventeht"));
 				vente.setMontantTotalVenteTva(resultat.getDouble("montanttotalventetva"));
-				vente.setMontanttotalventettc(resultat.getDouble("montanttotalventettc"));
+				vente.setMontantTotalVenteTtc(resultat.getDouble("montanttotalventettc"));
 				vente.setDatevente((resultat.getDate("datevente")));
-				//System.out.println("date dans le DAO : "+resultat.getDate("datevente"));
 				listeVente.add(vente);
 			}
-			resultat.close();/**Fermeture du ResultSet**/
+			resultat.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return listeVente;
@@ -124,9 +114,9 @@ public class VenteDAO extends DaoGenerique<Vente> {
 	public Vente findById(int id) {
 
 		Vente vente = null;
-		Client client = null;
-		Etat etat = null;
-		Session session = null;
+		Client client;
+		Etat etat;
+		Session session;
 		try {
 			PreparedStatement prepare = connection.prepareStatement("SELECT numerovente,idsession,idetat,idclient,montanttotalventeht,montanttotalventetva,montanttotalventettc,datevente FROM vente WHERE numerovente = ? ");
 			prepare.setInt(1, id);
@@ -143,14 +133,13 @@ public class VenteDAO extends DaoGenerique<Vente> {
 				session = new Session();
 				session.setIdsession(resultat.getInt("idsession"));
 				vente.setSession(session);
-				vente.setMontanttotalventeht(resultat.getDouble("montanttotalventeht"));
+				vente.setMontantTotalVenteHt(resultat.getDouble("montanttotalventeht"));
 				vente.setMontantTotalVenteTva(resultat.getDouble("montanttotalventetva"));
-				vente.setMontanttotalventettc(resultat.getDouble("montanttotalventettc"));
+				vente.setMontantTotalVenteTtc(resultat.getDouble("montanttotalventettc"));
 				vente.setDatevente(new java.util.Date(resultat.getDate("datevente").getTime()));
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return vente;
@@ -159,9 +148,9 @@ public class VenteDAO extends DaoGenerique<Vente> {
 	
 	public Vente findLast() {
 		Vente vente = null;
-		Client client = null;
-		Etat etat = null;
-		Session session = null;
+		Client client;
+		Etat etat;
+		Session session;
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultat = statement
@@ -178,18 +167,17 @@ public class VenteDAO extends DaoGenerique<Vente> {
 				session = new Session();
 				session.setIdsession(resultat.getInt("idsession"));
 				vente.setSession(session);
-				vente.setMontanttotalventeht(resultat
+				vente.setMontantTotalVenteHt(resultat
 						.getDouble("montanttotalventeht"));
 				vente.setMontantTotalVenteTva(resultat
 						.getDouble("montanttotalventetva"));
-				vente.setMontanttotalventettc(resultat
+				vente.setMontantTotalVenteTtc(resultat
 						.getDouble("montanttotalventettc"));
 				vente.setDatevente(new java.util.Date(resultat.getDate(
 						"datevente").getTime()));
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return vente;

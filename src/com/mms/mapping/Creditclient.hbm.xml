@@ -3,18 +3,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 25 nov. 2012 13:15:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.mms.pojos.Creditclient" table="creditclient" schema="public">
+    <class name="com.mms.domain.Creditclient" table="creditclient" schema="public">
         <id name="idcreditclient" type="int">
             <column name="idcreditclient" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="client" class="com.mms.pojos.Client" fetch="select">
+        <many-to-one name="client" class="com.mms.domain.Client" fetch="select">
             <column name="idclient" not-null="true" />
         </many-to-one>
-        <many-to-one name="session" class="com.mms.pojos.Session" fetch="select">
+        <many-to-one name="session" class="com.mms.domain.Session" fetch="select">
             <column name="idsession" not-null="true" />
         </many-to-one>
-        <many-to-one name="etat" class="com.mms.pojos.Etat" fetch="select">
+        <many-to-one name="etat" class="com.mms.domain.Etat" fetch="select">
             <column name="idetat" not-null="true" />
         </many-to-one>
         <property name="montanttotalht" type="big_decimal">
@@ -33,19 +33,19 @@
             <key>
                 <column name="idcreditclient" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignedevente" />
+            <one-to-many class="com.mms.domain.Lignedevente" />
         </set>
         <set name="payementcreditclients" inverse="true">
             <key>
                 <column name="idcreditclient" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Payementcreditclient" />
+            <one-to-many class="com.mms.domain.Payementcreditclient" />
         </set>
         <set name="lignecreditventes" inverse="true">
             <key>
                 <column name="idcreditclient" not-null="true" />
             </key>
-            <one-to-many class="com.mms.pojos.Lignecreditvente" />
+            <one-to-many class="com.mms.domain.Lignecreditvente" />
         </set>
     </class>
 </hibernate-mapping>

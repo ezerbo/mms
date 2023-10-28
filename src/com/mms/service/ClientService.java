@@ -5,7 +5,7 @@ package com.mms.service;
 import java.util.LinkedList;
 
 import com.mms.dao.ClientDAO;
-import com.mms.pojos.Client;
+import com.mms.domain.Client;
 
 public class ClientService {
 	private ClientDAO clientDAO = new ClientDAO();
