@@ -317,10 +317,10 @@ ALTER SEQUENCE motdepasse_idmdp_seq OWNED BY motdepasse.idmdp;
 
 
 --
--- Name: parametres; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
+-- Name: parameters; Type: TABLE; Schema: public; Owner: zerbo; Tablespace:
 --
 
-CREATE TABLE parametres (
+CREATE TABLE parameters (
     dureeviemdp integer NOT NULL,
     longueurmdp integer,
     tentativemdp integer,
@@ -329,7 +329,7 @@ CREATE TABLE parametres (
 );
 
 
---ALTER TABLE public.parametres OWNER TO zerbo;
+--ALTER TABLE public.parameters OWNER TO zerbo;
 
 --
 -- Name: payementcreditclient; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
@@ -429,10 +429,10 @@ ALTER SEQUENCE typeutilisateur_idtypeutilisateur_seq OWNED BY typeutilisateur.id
 
 
 --
--- Name: utilisateur; Type: TABLE; Schema: public; Owner: zerbo; Tablespace: 
+-- Name: user; Type: TABLE; Schema: public; Owner: zerbo; Tablespace:
 --
 
-CREATE TABLE utilisateur (
+CREATE TABLE user (
     idtypeutilisateur integer NOT NULL,
     nomutilisateur character varying(254),
     prenomutilisateur character varying(254),
@@ -444,7 +444,7 @@ CREATE TABLE utilisateur (
 );
 
 
---ALTER TABLE public.utilisateur OWNER TO zerbo;
+--ALTER TABLE public.user OWNER TO zerbo;
 
 --
 -- Name: utilisateur_idutilisateur_seq; Type: SEQUENCE; Schema: public; Owner: zerbo
@@ -464,7 +464,7 @@ CREATE SEQUENCE utilisateur_idutilisateur_seq
 -- Name: utilisateur_idutilisateur_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: zerbo
 --
 
-ALTER SEQUENCE utilisateur_idutilisateur_seq OWNED BY utilisateur.idutilisateur;
+ALTER SEQUENCE utilisateur_idutilisateur_seq OWNED BY user.idutilisateur;
 
 
 --
@@ -531,7 +531,7 @@ ALTER TABLE ONLY typeutilisateur ALTER COLUMN idtypeutilisateur SET DEFAULT next
 -- Name: idutilisateur; Type: DEFAULT; Schema: public; Owner: zerbo
 --
 
-ALTER TABLE ONLY utilisateur ALTER COLUMN idutilisateur SET DEFAULT nextval('utilisateur_idutilisateur_seq'::regclass);
+ALTER TABLE ONLY user ALTER COLUMN idutilisateur SET DEFAULT nextval('utilisateur_idutilisateur_seq'::regclass);
 
 
 --
@@ -642,7 +642,7 @@ ALTER TABLE ONLY motdepasse
 -- Name: pk_parametres; Type: CONSTRAINT; Schema: public; Owner: zerbo; Tablespace: 
 --
 
-ALTER TABLE ONLY parametres
+ALTER TABLE ONLY parameters
     ADD CONSTRAINT pk_parametres PRIMARY KEY (dureeviemdp);
 
 
@@ -682,7 +682,7 @@ ALTER TABLE ONLY typeutilisateur
 -- Name: pk_utilisateur; Type: CONSTRAINT; Schema: public; Owner: zerbo; Tablespace: 
 --
 
-ALTER TABLE ONLY utilisateur
+ALTER TABLE ONLY user
     ADD CONSTRAINT pk_utilisateur PRIMARY KEY (idutilisateur);
 
 
@@ -855,7 +855,7 @@ CREATE INDEX association36_fk ON lignecreditachat USING btree (idcategorie);
 -- Name: association3_fk; Type: INDEX; Schema: public; Owner: zerbo; Tablespace: 
 --
 
-CREATE INDEX association3_fk ON utilisateur USING btree (idtypeutilisateur);
+CREATE INDEX association3_fk ON user USING btree (idtypeutilisateur);
 
 
 --
@@ -939,7 +939,7 @@ CREATE INDEX fki_session7 ON achat USING btree (idsession);
 -- Name: fki_typeutilisateur; Type: INDEX; Schema: public; Owner: zerbo; Tablespace: 
 --
 
-CREATE INDEX fki_typeutilisateur ON utilisateur USING btree (idtypeutilisateur);
+CREATE INDEX fki_typeutilisateur ON user USING btree (idtypeutilisateur);
 
 
 --
@@ -1137,7 +1137,7 @@ ALTER TABLE ONLY achat
 -- Name: fk_typeutilisateur; Type: FK CONSTRAINT; Schema: public; Owner: zerbo
 --
 
-ALTER TABLE ONLY utilisateur
+ALTER TABLE ONLY user
     ADD CONSTRAINT fk_typeutilisateur FOREIGN KEY (idtypeutilisateur) REFERENCES typeutilisateur(idtypeutilisateur) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
@@ -1146,7 +1146,7 @@ ALTER TABLE ONLY utilisateur
 --
 
 ALTER TABLE ONLY session
-    ADD CONSTRAINT fk_utilisateur FOREIGN KEY (idutilisateur) REFERENCES utilisateur(idutilisateur) ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT fk_utilisateur FOREIGN KEY (idutilisateur) REFERENCES user(idutilisateur) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --

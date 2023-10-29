@@ -13,7 +13,7 @@ public class Session implements java.io.Serializable {
 
     private int idsession;
 
-    private Utilisateur utilisateur;
+    private User user;
 
     private String datedebutsession;
 

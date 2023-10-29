@@ -2,42 +2,42 @@ package com.mms.dao;
 
 import java.util.List;
 
-import com.mms.domain.Typeutilisateur;
+import com.mms.domain.UserType;
 
-public class TypeUtilisateurDAO extends DaoGenerique<Typeutilisateur> {
+public class TypeUtilisateurDAO extends DaoGenerique<UserType> {
 
 	@Override
-	public Typeutilisateur create(Typeutilisateur typeUtilisateur) {
+	public UserType create(UserType typeUtilisateur) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int delete(Typeutilisateur typeUtilisateur) {
+	public int delete(UserType typeUtilisateur) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int update(Typeutilisateur typeUtilisateur) {
+	public int update(UserType typeUtilisateur) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public Typeutilisateur findByName(String name) {
+	public UserType findByName(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Typeutilisateur> findAll() {
+	public List<UserType> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Typeutilisateur findById(int id) {
+	public UserType findById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

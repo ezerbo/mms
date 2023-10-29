@@ -2,8 +2,8 @@ package com.mms.event;
 
 import java.util.EventObject;
 
-import com.mms.interfaces.supplier.ModifierFournisseur;
-import com.mms.interfaces.supplier.NouveauFournisseur;
+import com.mms.ui.inventory.ModifierFournisseur;
+import com.mms.ui.inventory.NouveauFournisseur;
 
 @SuppressWarnings("serial")
 public class FournisseurEvent extends EventObject {

@@ -12,8 +12,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableRowSorter;
 
-import com.mms.interfaces.sale.HistoriqueVente;
-import com.mms.interfaces.tablemodels.TableModelHistoriqueVente;
+import com.mms.ui.sale.HistoriqueVente;
+import com.mms.ui.tablemodels.TableModelHistoriqueVente;
 
 // Referenced classes of package interfaces:
 //            Model, EnteteOperation, VenteEnregistrees, ModelListe

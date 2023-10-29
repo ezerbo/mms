@@ -8,7 +8,7 @@
             <column name="idsession" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="utilisateur" class="com.mms.domain.Utilisateur" fetch="select">
+        <many-to-one name="user" class="com.mms.domain.User" fetch="select">
             <column name="idutilisateur" not-null="true" />
         </many-to-one>
         <property name="datedebutsession" type="date">

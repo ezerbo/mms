@@ -2,7 +2,7 @@ package com.mms.event;
 
 import java.util.EventObject;
 
-import com.mms.interfaces.tablemodels.TableModelVente;
+import com.mms.ui.tablemodels.TableModelVente;
 
 @SuppressWarnings("serial")
 public class VenteEvent extends EventObject {
