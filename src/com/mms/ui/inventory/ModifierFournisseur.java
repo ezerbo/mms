@@ -14,28 +14,10 @@ import com.mms.domain.Fournisseur;
 import com.mms.service.FournisseurService;
 
 public class ModifierFournisseur extends EnregistrementActeurExterne {
-	private ArrayList<FournisseurListener> fournisseurListener = new ArrayList<FournisseurListener>();
+	private ArrayList<FournisseurListener> fournisseurListener = new ArrayList<>();
 	private FournisseurService fournisseurService = new FournisseurService();
 	private String ancienNumeroDeTelephone;
 
-	public synchronized void addFournisseurListener(FournisseurListener listener) {
-		if (fournisseurListener.contains(listener)) {
-			return;
-		}
-		fournisseurListener.add(listener);
-	}
-
-	public synchronized void removeFournisseurListener(
-			FournisseurListener listener) {
-		fournisseurListener.remove(listener);
-	}
-	public void renseigneChamps() {
-		Fournisseur fournisseur = fournisseurService
-				.retournerFournisseur(ancienNumeroDeTelephone);
-		f_nom.setText(fournisseur.getNomFournisseur());
-		f_prenom.setText(fournisseur.getPrenomFournisseur());
-		f_telephone.setText(fournisseur.getTelephonefournisseur());
-	}
 	public ModifierFournisseur() {
 
 		setTitle("Nouveau fournisseur");
@@ -71,10 +53,6 @@ public class ModifierFournisseur extends EnregistrementActeurExterne {
 						f_nom.getText(),
 						f_prenom.getText(), 
 						f_telephone.getText().substring(8),ancienNumeroDeTelephone) != 0) {
-					/***
-					 * Si toutes les conditions sont reunies pour enregistrer le
-					 * fournisseur
-					 **/
 					fireNouveauFournisseur();
 					JOptionPane.showMessageDialog(null,
 							"Fournisseur mis � jour avec success",
@@ -109,18 +87,4 @@ public class ModifierFournisseur extends EnregistrementActeurExterne {
 
 	}
 
-	/**
-	 * @return the ancienNumeroDeTelephone
-	 */
-	public String getAncienNumeroDeTelephone() {
-		return ancienNumeroDeTelephone;
-	}
-
-	/**
-	 * @param ancienNumeroDeTelephone
-	 *            the ancienNumeroDeTelephone to set
-	 */
-	public void setAncienNumeroDeTelephone(String ancienNumeroDeTelephone) {
-		this.ancienNumeroDeTelephone = ancienNumeroDeTelephone;
-	}
 }

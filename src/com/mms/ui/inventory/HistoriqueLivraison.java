@@ -61,21 +61,19 @@ public class HistoriqueLivraison extends JDialog {
 		bilan = new TableModelBilanCredit();
 		tableBilan = new JTable(bilan);
 		panelBilanCentre.add(new JScrollPane(tableBilan), "Center");
-		l_title = new JLabel(
-				"<html>Livraisons r\351alis\351es<br>Liste de toutes les livraisons enregistr\351"
-						+ "es</html>");
+		l_title = new JLabel("<html>Livraisons r\351alis\351es<br>Liste de toutes les livraisons enregistrés</html>");
 		add(panelRecherche, "North");
 		add(panelBouton, "South");
-		panelBouton.setLayout(new FlowLayout(0));
+		panelBouton.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panelBouton.add(b_fermer);
 		panelBouton.add(b_annulerVente);
-		l_title.setFont(new Font("SansSerif", 2, 18));
-		panelTitle.setLayout(new FlowLayout(0));
+		l_title.setFont(new Font("SansSerif", Font.ITALIC, 18));
+		panelTitle.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panelTitle.add(l_title);
 
 		panelTable.setLayout(new BorderLayout());
 		panelTable.add(new JScrollPane(table));
-		splitPane = new JSplitPane(0, panelTable, panelListeProduit);
+		splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panelTable, panelListeProduit);
 		setTitle("Liste des Livraison");
 		panelCentre.setLayout(new BorderLayout());
 		panelCentre.add(splitPane, "Center");
@@ -91,21 +89,18 @@ public class HistoriqueLivraison extends JDialog {
 
 	public void abonne() {
 		table.addMouseListener(new MouseAdapter() {
-
 			public void mouseClicked(MouseEvent event) {
 			}
-
 		});
 		b_fermer.addActionListener(e -> setVisible(false));
 		b_annulerVente.setEnabled(false);
-		b_annulerVente.addActionListener(e -> {
-		});
+		b_annulerVente.addActionListener(e -> {});
 	}
 
 	public void afficheCredit() {
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		new HistoriqueLivraison();
 	}
 

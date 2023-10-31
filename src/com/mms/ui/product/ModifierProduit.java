@@ -128,8 +128,7 @@ public class ModifierProduit extends JDialog {
 				&& !f_quantiteSecurite.equals("")) {
 			if (Integer.parseInt(f_prixUnitaireAchat.getText()) > Integer
 					.parseInt(f_prixUnitaireVente.getText())) {
-				JOptionPane
-						.showMessageDialog(
+				JOptionPane.showMessageDialog(
 								null,
 								"Le prix d'achat ne peut etre superieur au prix de vente",
 								"Information", JOptionPane.INFORMATION_MESSAGE);
@@ -140,7 +139,6 @@ public class ModifierProduit extends JDialog {
 						Integer.parseInt(f_prixUnitaireVente.getText()),
 						Integer.parseInt(f_quantiteIdeale.getText()),
 						Integer.parseInt(f_quantiteSecurite.getText())) != 0) {
-					/** Enregistrement reussi **/
 					JOptionPane.showMessageDialog(null,
 							"Produit mis a jour avec succes !!!",
 							"Succes de l'operation",
@@ -154,7 +152,6 @@ public class ModifierProduit extends JDialog {
 				}
 			}
 		} else {
-			/** Si tous es champs ne sont pas renseign�s ***/
 			JOptionPane.showMessageDialog(null,
 					"Renseignez les champs svp !!!", "Erreur",
 					JOptionPane.ERROR_MESSAGE);

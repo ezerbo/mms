@@ -379,7 +379,10 @@ public class HistoriqueVente extends JDialog {
 					
 				}
 			}catch(IndexOutOfBoundsException e){
-				JOptionPane.showMessageDialog(null, "Aucune vente trouv�e !!!","Information", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null
+						, "Aucune vente trouv�e !!!"
+						,"Information"
+						, JOptionPane.INFORMATION_MESSAGE);
 			}
 			
 	}

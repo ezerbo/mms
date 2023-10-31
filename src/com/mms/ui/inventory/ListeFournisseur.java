@@ -26,8 +26,7 @@ public class ListeFournisseur extends ActeurExterne implements FournisseurListen
 	private FournisseurService fournisseurService;
 
 	public ListeFournisseur() {
-		super("Fournisseurs enregistr\351s",
-				"        fenetre donnant la liste des fournisseurs");
+		super("Fournisseurs enregistrés", "fenêtre donnant la liste des fournisseurs");
 		setTitle("Liste des fournisseurs");
 		b_ajouter = new JButton("Nouveau fournisseur");
 		tableModelFournisseur = new TableModelFournisseur();
@@ -38,35 +37,31 @@ public class ListeFournisseur extends ActeurExterne implements FournisseurListen
 		add(new JScrollPane(tableFournisseur), "Center");
 		deleteClientButton.setEnabled(false);
 		updateClientButton.setEnabled(false);
-		deleteClientButton.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent arg0) {
-				int result = JOptionPane.showConfirmDialog(null,
-						"Voulez-vous vraiment supprimer cet fournisseur ?",
-						"Confirmation", JOptionPane.YES_NO_OPTION);
-				if (result == 0) {
-					/** Verifier si l'on ne doit pas au fournisseur */
-					String numeroDeTelephone = (String) tableFournisseur
-							.getValueAt(tableFournisseur.getSelectedRow(),
-									COLONNETELEPHONE);
-					if (fournisseurService
-							.supprimerFournisseur(numeroDeTelephone) != 0) {
-						JOptionPane.showMessageDialog(null,
-								"Fournisseur supprimer avec succes",
-								"Succes de l'operation",
-								JOptionPane.INFORMATION_MESSAGE);
-						// afficheListeFournisseur();
-						tableModelFournisseur.delete(tableFournisseur
-								.getSelectedRow());
-					} else {
-						JOptionPane.showMessageDialog(null,
-								"Le fournisseur n'a pas pu etre supprim�",
-								"Echec de l'operation",
-								JOptionPane.ERROR_MESSAGE);
-					}
+		deleteClientButton.addActionListener(arg0 -> {
+			int result = JOptionPane.showConfirmDialog(null
+					, "Voulez-vous vraiment supprimer cet fournisseur ?"
+					, "Confirmation"
+					, JOptionPane.YES_NO_OPTION);
+			if (result == 0) {
+				String numeroDeTelephone = (String) tableFournisseur
+						.getValueAt(tableFournisseur.getSelectedRow(),
+								COLONNETELEPHONE);
+				if (fournisseurService
+						.supprimerFournisseur(numeroDeTelephone) != 0) {
+					JOptionPane.showMessageDialog(null,
+							"Fournisseur supprimer avec succès"
+							, "Succès de l'opération"
+							, JOptionPane.INFORMATION_MESSAGE);
+					// afficheListeFournisseur();
+					tableModelFournisseur.delete(tableFournisseur
+							.getSelectedRow());
+				} else {
+					JOptionPane.showMessageDialog(null
+							, "Le fournisseur n'a pas pu etre supprim�"
+							, "Échec de l'opération"
+							, JOptionPane.ERROR_MESSAGE);
 				}
 			}
-
 		});
 		updateClientButton.addActionListener(e -> tableModelFournisseur.fireTableDataChanged());
 		b_ajouter.addActionListener(e -> {});

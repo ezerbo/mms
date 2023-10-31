@@ -68,8 +68,7 @@ public class Catalogue extends JDialog  {
 		itemExportExcel = new JMenuItem("Exporter en Excel");
 		itemSommaireAide = new JMenuItem("Sommaire de l'aide");
 		itemRapportBogue = new JMenuItem("Envoyer un rapport de bogue");
-		itemCommentaireSuggestions = new JMenuItem(
-				"Envoyer des commantaires ou des suggestions d'amelioration");
+		itemCommentaireSuggestions = new JMenuItem("Envoyer des commantaires ou des suggestions d'amelioration");
 		menuCatalogue.add(itemImprimer);
 		menuCatalogue.add(itemExportPdf);
 		menuCatalogue.add(itemExportExcel);
@@ -85,8 +84,7 @@ public class Catalogue extends JDialog  {
 		setSize(new Dimension(640, 480));
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(2);
-		b_ajouterProduit.addActionListener(arg0 -> {
-		});
+		b_ajouterProduit.addActionListener(e -> {});
 		b_fermer.addActionListener(arg0 -> dispose());
 		afficheProduit();
 		setModal(true);

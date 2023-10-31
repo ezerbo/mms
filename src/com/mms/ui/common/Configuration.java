@@ -11,20 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JSlider;
-import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -47,7 +34,6 @@ import com.mms.ui.tablemodels.TableModelBilan;
 import com.mms.ui.tablemodels.TableModelUtilisateur;
 import com.toedter.calendar.JDateChooser;
 
-@SuppressWarnings("serial")
 public class Configuration extends JDialog implements UtilisateurListener {
 
 	private JPanel panelCentre;
@@ -148,7 +134,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		statistiqueVenteTableModel = new StatistiqueVenteTableModel();
 		bilanTableModel = new TableModelBilan();
 		b_nouvelUtilisateur = new JButton("Nouvel Utilisateur");
-		b_activiteUtilisateur = new JButton("Activit\351s");
+		b_activiteUtilisateur = new JButton("Activités");
 		b_supprimerUtilisateur = new JButton("Supprimer");
 		b_validerBilan = new JButton("Valider");
 		b_supprimerProduit = new JButton("Supprimer le produit");
@@ -159,7 +145,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		b_modifier = new JButton("Modifier");
 		l_statistiqueVente = new JLabel("Statistiques des ventes");
 		l_statistiqueVente.setIcon(new ImageIcon("ressources/images/statistique.png"));
-		l_expAdmin = new JLabel("           fenetre d'administration de l'application");
+		l_expAdmin = new JLabel("fenêtre d'administration de l'application");
 		l_expAdmin.setFont(new Font("Times new Roman",Font.ITALIC,18));
 		historiqueVente = new Historique(this);
 		historiqueVente.setVisible(false);
@@ -203,7 +189,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		sliderDureeVieMDP.setPaintLabels(true);
 		sliderDureeVieMDP.setMajorTickSpacing(10);
 		sliderDureeVieMDP.setMinorTickSpacing(5);
-		sliderDureeVieMDP.setBorder(new TitledBorder("dur�e de vie du mot de passe"));
+		sliderDureeVieMDP.setBorder(new TitledBorder("durée de vie du mot de passe"));
 		sliderDureeVieMDP.setPaintTicks(true);
 		sliderDureeVieMDP.setEnabled(false);
 
@@ -230,7 +216,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		panelSpinnerNbreTentative.add(spinnerNbreTentative);
 		panelSpinnerTempsInactivite = new JPanel();
 		panelSpinnerTempsInactivite.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panelSpinnerTempsInactivite.add(new JLabel("Temps d'inactivit� apres echec : "));
+		panelSpinnerTempsInactivite.add(new JLabel("Temps d'inactivité apres échec : "));
 		panelSpinnerTempsInactivite.add(spinnerTempsInactivite);
 		panelSpinner = new JPanel();
 		panelSpinner.setLayout(new BoxLayout(panelSpinner, BoxLayout.Y_AXIS));
@@ -258,7 +244,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		titlePanel.setBackground(Color.WHITE);
 		panelNord.add(titlePanel);
 		panelIcon.setLayout(new FlowLayout(2));
-		panelIcon.add(new JLabel(new ImageIcon("ressources/images/configuration.png"), 4));
+		panelIcon.add(new JLabel(new ImageIcon("ressources/images/configuration.png"), SwingConstants.RIGHT));
 		panelIcon.setBackground(Color.WHITE);
 		panelNord.add(panelIcon);
 		panelNord.setBackground(Color.WHITE);
@@ -293,7 +279,7 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		newUserUI = new NewUserUI();
 		newUserUI.addUtilisateurListener(this);
 		popupMenuUtilisateur = new JPopupMenu();
-		itemActiviteUtilisateur = new JMenuItem("Voir les activit�s de cet utilisateur");
+		itemActiviteUtilisateur = new JMenuItem("Voir les activités de cet utilisateur");
 		itemInfoUtilisateur = new JMenuItem("Plus d'informations sur cet utilisateur");
 		itemSupprimerUtilisateur = new JMenuItem("Supprimer cet utilisateur");
 		popupMenuUtilisateur.add(itemInfoUtilisateur);
@@ -305,29 +291,10 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		afficherListeGestionnaire();
 		afficheParametre();
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		itemActiviteUtilisateur.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				new Activite();
-			}
-		});
-		itemInfoUtilisateur.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				new InfoUtilisateur((String)tableUtilisateur.getValueAt(tableUtilisateur.getSelectedRow(), COLONNELOGIN));
-				//JOptionPane.showMessageDialog(null, "plus d'informations");
-			}
-		});
-		itemSupprimerUtilisateur.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				supprimerUtilisateur();
-			}
-		});
+		itemActiviteUtilisateur.addActionListener(e -> new Activite());
+		itemInfoUtilisateur.addActionListener(e -> new InfoUtilisateur(
+				(String)tableUtilisateur.getValueAt(tableUtilisateur.getSelectedRow(), COLONNELOGIN)));
+		itemSupprimerUtilisateur.addActionListener(e -> supprimerUtilisateur());
 		tableUtilisateur.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent event) {
 				showIfPopupTrigger(event);
@@ -339,146 +306,86 @@ public class Configuration extends JDialog implements UtilisateurListener {
 
 			public void showIfPopupTrigger(MouseEvent event) {
 				if (event.isPopupTrigger()) {
-					popupMenuUtilisateur.show(tableUtilisateur, event.getX(), /***
-					 * 
-					 * 
-					 * affichage du popup
-					 */
-					event.getY());
+					popupMenuUtilisateur.show(tableUtilisateur, event.getX(), event.getY());
 				}
 			}
 		});
 
-		spinnerNbreTentative.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				spinnerNbreTentative.updateUI();
-				spinnerNbreTentative.requestFocus();
-			}
+		spinnerNbreTentative.addChangeListener(e -> {
+			spinnerNbreTentative.updateUI();
+			spinnerNbreTentative.requestFocus();
 		});
-		spinnerTempsInactivite.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				spinnerTempsInactivite.updateUI();
-				spinnerTempsInactivite.requestFocus();
-			}
+		spinnerTempsInactivite.addChangeListener(e -> {
+			spinnerTempsInactivite.updateUI();
+			spinnerTempsInactivite.requestFocus();
 		});
-		b_nouvelUtilisateur.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				/*** reinitialisation des champs de la table */
-				newUserUI.reinitialiseChamps();
-				newUserUI.setVisible(true);
-			}
+		b_nouvelUtilisateur.addActionListener(e -> {
+			newUserUI.reinitialiseChamps();
+			newUserUI.setVisible(true);
 		});
-		b_modifier.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				spinnerNbreTentative.setEnabled(true);
-				spinnerTempsInactivite.setEnabled(true);
-				sliderDureeVieMDP.setEnabled(true);
-				sliderLongueurMDP.setEnabled(true);
-
-			}
+		b_modifier.addActionListener(e -> {
+			spinnerNbreTentative.setEnabled(true);
+			spinnerTempsInactivite.setEnabled(true);
+			sliderDureeVieMDP.setEnabled(true);
+			sliderLongueurMDP.setEnabled(true);
 
 		});
-		spinnerNbreTentative.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent arg0) {
-				b_enregistrerParametres.setEnabled(true);
-				b_annulerModificationParametres.setEnabled(true);
-			}
+		spinnerNbreTentative.addChangeListener(e -> {
+			b_enregistrerParametres.setEnabled(true);
+			b_annulerModificationParametres.setEnabled(true);
 		});
-		spinnerTempsInactivite.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				b_enregistrerParametres.setEnabled(true);
-				b_annulerModificationParametres.setEnabled(true);
-			}
+		spinnerTempsInactivite.addChangeListener(e -> {
+			b_enregistrerParametres.setEnabled(true);
+			b_annulerModificationParametres.setEnabled(true);
 		});
-		sliderDureeVieMDP.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				b_enregistrerParametres.setEnabled(true);
-				b_annulerModificationParametres.setEnabled(true);
-			}
+		sliderDureeVieMDP.addChangeListener(e -> {
+			b_enregistrerParametres.setEnabled(true);
+			b_annulerModificationParametres.setEnabled(true);
 		});
-		sliderLongueurMDP.addChangeListener(new ChangeListener() {
-
-			@Override
-			public void stateChanged(ChangeEvent e) {
-				b_enregistrerParametres.setEnabled(true);
-				b_annulerModificationParametres.setEnabled(true);
-			}
+		sliderLongueurMDP.addChangeListener(e -> {
+			b_enregistrerParametres.setEnabled(true);
+			b_annulerModificationParametres.setEnabled(true);
 		});
-		b_enregistrerParametres.addActionListener(new ActionListener() {
+		b_enregistrerParametres.addActionListener(e -> {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				if (new UserService().updateParameters(
-						sliderLongueurMDP.getValue(),
-						sliderDureeVieMDP.getValue(),
-						(Integer) spinnerNbreTentative.getValue(),
-						(Integer) spinnerTempsInactivite.getValue()) != 0) {
-					spinnerNbreTentative.setEnabled(false);
-					spinnerTempsInactivite.setEnabled(false);
-					sliderDureeVieMDP.setEnabled(false);
-					sliderLongueurMDP.setEnabled(false);
-					b_enregistrerParametres.setEnabled(false);
-					b_annulerModificationParametres.setEnabled(false);
-					JOptionPane.showMessageDialog(null,
-							"Parametres mis � jour avec succes !!!",
-							"succes de la mise � jour",
-							JOptionPane.INFORMATION_MESSAGE);
-				}
-
-			}
-		});
-		b_annulerModificationParametres.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				Parameters parameters = new UserService().getParameters();
-				spinnerNbreTentative.setValue(parameters.getTentativemdp());
-				spinnerTempsInactivite.setValue(parameters.getTempsinactivitesmdp());
-				sliderDureeVieMDP.setValue(parameters.getDureeviemdp());
-				sliderLongueurMDP.setValue(parameters.getLongueurmdp());
+			if (new UserService().updateParameters(sliderLongueurMDP.getValue(), sliderDureeVieMDP.getValue(),
+					(Integer) spinnerNbreTentative.getValue(),
+					(Integer) spinnerTempsInactivite.getValue()) != 0) {
 				spinnerNbreTentative.setEnabled(false);
 				spinnerTempsInactivite.setEnabled(false);
 				sliderDureeVieMDP.setEnabled(false);
 				sliderLongueurMDP.setEnabled(false);
-				b_annulerModificationParametres.setEnabled(false);
 				b_enregistrerParametres.setEnabled(false);
+				b_annulerModificationParametres.setEnabled(false);
+				JOptionPane.showMessageDialog(null
+						, "Paramètres mis à jour avec succès!"
+						, "succès de la mise à jour"
+						, JOptionPane.INFORMATION_MESSAGE);
 			}
+
+		});
+		b_annulerModificationParametres.addActionListener(e -> {
+			Parameters parameters = new UserService().getParameters();
+			spinnerNbreTentative.setValue(parameters.getTentativemdp());
+			spinnerTempsInactivite.setValue(parameters.getTempsinactivitesmdp());
+			sliderDureeVieMDP.setValue(parameters.getDureeviemdp());
+			sliderLongueurMDP.setValue(parameters.getLongueurmdp());
+			spinnerNbreTentative.setEnabled(false);
+			spinnerTempsInactivite.setEnabled(false);
+			sliderDureeVieMDP.setEnabled(false);
+			sliderLongueurMDP.setEnabled(false);
+			b_annulerModificationParametres.setEnabled(false);
+			b_enregistrerParametres.setEnabled(false);
 		});
 		tableUtilisateur.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				b_activiteUtilisateur.setEnabled(true);
 				b_supprimerUtilisateur.setEnabled(true);
 			}
 		});
-		b_supprimerUtilisateur.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				supprimerUtilisateur();
-			}
-		});
-		b_activiteUtilisateur.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new Activite();
-			}
-		});
+		b_supprimerUtilisateur.addActionListener(e -> supprimerUtilisateur());
+		b_activiteUtilisateur.addActionListener(e -> new Activite());
 		setResizable(false);
 		setSize(new Dimension(950, 660));
 		setLocationRelativeTo(null);
@@ -487,39 +394,30 @@ public class Configuration extends JDialog implements UtilisateurListener {
 		setVisible(true);
 	}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		new Configuration();
 	}
 
 	@Override
 	public void ajouterUilisateur(UtilisateurEvent event) {
 		tableModelUtilisateur.netoyerListe();
-		/**
-		 * suppression de toutes les entr�es de la table des utilisateur
-		 */
 		afficherListeGestionnaire();
 	}
 
 	public void supprimerUtilisateur() {
-		int confirmation = JOptionPane
-				.showConfirmDialog(
-						null,
-						"Toutes les informations concernant cet utilisateur seront perdues,voulez-vous vraiment continuer ?",
-						"Confirmation de la suppression",
-						JOptionPane.YES_NO_OPTION);
+		int confirmation = JOptionPane.showConfirmDialog(null
+						, "Toutes les informations concernant cet utilisateur seront perdues,voulez-vous vraiment continuer ?"
+						, "Confirmation de la suppression"
+						, JOptionPane.YES_NO_OPTION);
 		if (confirmation == 0) {
 			if (new UserService()
-					.delete((String) tableUtilisateur.getValueAt(
-							tableUtilisateur.getSelectedRow(), COLONNELOGIN)) != 0) {
+					.delete((String) tableUtilisateur.getValueAt(tableUtilisateur.getSelectedRow(), COLONNELOGIN)) != 0) {
 				tableModelUtilisateur.netoyerListe();
-				/**
-				 * suppression de toutes les entr�es de la table des utilisateur
-				 */
 				afficherListeGestionnaire();
-				JOptionPane.showMessageDialog(null,
-						"Utilisateur supprim� avec succes",
-						"Reussite de l'operation de suppression",
-						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null
+						, "Utilisateur supprimé avec succès"
+						, "Réussite de l'opération de suppression"
+						, JOptionPane.INFORMATION_MESSAGE);
 				b_activiteUtilisateur.setEnabled(false);
 				b_supprimerUtilisateur.setEnabled(false);
 			}
@@ -529,7 +427,6 @@ public class Configuration extends JDialog implements UtilisateurListener {
 
 	public void afficheParametre() {
 		Parameters parameters = new UserService().getParameters();
-		System.out.println("Duree : " + parameters.getDureeviemdp());
 		sliderDureeVieMDP.setValue(parameters.getDureeviemdp());
 		sliderLongueurMDP.setValue(parameters.getLongueurmdp());
 		spinnerNbreTentative.setValue(parameters.getTentativemdp());

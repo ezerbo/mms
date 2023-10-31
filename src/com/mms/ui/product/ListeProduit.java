@@ -88,8 +88,7 @@ public class ListeProduit extends JDialog implements ProduitListener {
 		panelTitle.add(labelGrandTitre, BorderLayout.NORTH);
 		panelTitle.add(labelPetitTitre);
 		panelTitle.setBackground(Color.WHITE);
-		panelIcon.add(new JLabel(new ImageIcon(
-				"ressources/images/acteurExterne.jpg")));
+		panelIcon.add(new JLabel(new ImageIcon("ressources/images/acteurExterne.jpg")));
 		panelIcon.setBackground(Color.WHITE);
 		panelIcon.setLayout(new FlowLayout(2));
 		panelNorth.setBackground(Color.WHITE);

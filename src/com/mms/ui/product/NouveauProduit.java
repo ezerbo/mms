@@ -22,7 +22,6 @@ import com.mms.ui.common.TextFieldTable;
 import com.mms.listener.ProduitListener;
 import com.mms.service.CategorieService;
 
-@SuppressWarnings("serial")
 public class NouveauProduit extends JDialog {
 	private JPanel panelCentre;
 	private JPanel panelNord;
@@ -47,10 +46,6 @@ public class NouveauProduit extends JDialog {
 			return;
 		}
 		produitListeners.add(listener);
-	}
-
-	public synchronized void removeProduitListener(ProduitListener listener) {
-		produitListeners.remove(listener);
 	}
 
 	public void fireNouveauProduit() {
@@ -116,26 +111,11 @@ public class NouveauProduit extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		pack();
 		setLocationRelativeTo(null);
-		b_annuler.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				dispose();
-			}
-		});
-		b_enregistrer.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				enregistrerProduit();
-			}
-		});
+		b_annuler.addActionListener(e -> dispose());
+		b_enregistrer.addActionListener(e -> enregistrerProduit());
 		setModal(true);
 	}
 	private void enregistrerProduit() {
-
-		// TODO Auto-generated method stub
 		if (!f_designation.getText().equals("")
 				&& !f_prixUnitaireAchat.getText().equals("")
 				&& !f_prixUnitaireVente.getText().equals("")
@@ -156,7 +136,6 @@ public class NouveauProduit extends JDialog {
 						Integer.parseInt(f_quantiteInitiale.getText()),
 						Integer.parseInt(f_quantiteIdeale.getText()),
 						Integer.parseInt(f_quantiteSecurite.getText())) != null) {
-					/** Enregistrement reussi **/
 					JOptionPane.showMessageDialog(null,
 							"Produit enregistr� avec succes !!!",
 							"Succes de l'operation",
@@ -164,14 +143,12 @@ public class NouveauProduit extends JDialog {
 					fireNouveauProduit();
 					dispose();
 				} else {
-					/** Le produit courant est deja dans la base de donn�es ***/
 					JOptionPane.showMessageDialog(null,
 							"Ce produit existe d�j� !!!", "Erreur",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		} else {
-			/** Si tous es champs ne sont pas renseign�s ***/
 			JOptionPane.showMessageDialog(null,
 					"Renseignez les champs svp !!!", "Erreur",
 					JOptionPane.ERROR_MESSAGE);
@@ -184,14 +161,13 @@ public class NouveauProduit extends JDialog {
 		while (designation.charAt(index) == ' ') {
 			index++;
 		}
-		chaineARetourner = designation.substring(index, designation.length());
+		chaineARetourner = designation.substring(index);
 		return chaineARetourner;
 	}
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new NouveauProduit().setVisible(true);
 		// System.out.println(new
 		// NouveauProduit().retourneDesignation("Teste"));

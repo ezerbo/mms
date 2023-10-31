@@ -9,8 +9,9 @@ import javax.swing.text.PlainDocument;
 public class TextFieldTable extends JTextField {
 	public void requestFocus() {
 		super.requestFocus();
-		if (getText().equals("0"))
+		if (getText().equals("0")) {
 			this.setText("");
+		}
 
 	}
 
@@ -21,17 +22,10 @@ public class TextFieldTable extends JTextField {
 				if (str == null || str.length() == 0)
 					return;
 				String text = getText(0, getLength());
-				/** recuperation de l'ancienne valeur dans le JTextField */
 				try {
-					Integer.parseInt(str);// conversion de la saisie courante
-					super.remove(0, getLength());// suppression de l'ancienne
-													// valeur dans le JTextField
+					Integer.parseInt(str);
+					super.remove(0, getLength());
 					super.insertString(0, text + str, a);
-					/**
-					 * ajout de l'ancienne valeur augment� de la valeur
-					 * nouvellement ajout�e
-					 */
-					return;
 				} catch (NumberFormatException e) {
 				}
 

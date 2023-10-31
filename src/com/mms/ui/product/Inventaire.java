@@ -96,7 +96,7 @@ public class Inventaire extends JDialog {
 		}
 	}
 
-	public static void main(String[] agrs) {
+	public static void main(String[] args) {
 		new Inventaire().setVisible(true);
 	}
 }

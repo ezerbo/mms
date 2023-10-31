@@ -21,7 +21,6 @@ public class AdminCreationUI extends JDialog {
 
     private final static int NUM_COL_PWD_FIELD = 20;
 
-    private final static String PHONE_NUMBER_MASK = "(226) - ## - ## - ## - ##";
     private final NoBlankTextField lastNameField = new NoBlankTextField();
     private final NoBlankTextField firstNameField = new NoBlankTextField();
     private final NoBlankTextField usernameField = new NoBlankTextField();

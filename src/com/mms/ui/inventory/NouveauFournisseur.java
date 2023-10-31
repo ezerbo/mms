@@ -14,20 +14,8 @@ import com.mms.service.FournisseurService;
 
 public class NouveauFournisseur extends EnregistrementActeurExterne {
 
-	private ArrayList<FournisseurListener> fournisseurListener = new ArrayList<FournisseurListener>();
+	private ArrayList<FournisseurListener> fournisseurListener = new ArrayList<>();
 	private FournisseurService fournisseurService = new FournisseurService();
-
-	public synchronized void addFournisseurListener(FournisseurListener listener) {
-		if (fournisseurListener.contains(listener)) {
-			return;
-		}
-		fournisseurListener.add(listener);
-	}
-
-	public synchronized void removeFournisseurListener(
-			FournisseurListener listener) {
-		fournisseurListener.remove(listener);
-	}
 
 	public NouveauFournisseur() {
 		setTitle("Nouveau fournisseur");
@@ -57,18 +45,11 @@ public class NouveauFournisseur extends EnregistrementActeurExterne {
 	public void enregistrerFournisseur() {
 
 		if (verifierSaisie()) {
-			if (verifierNumeroTelephone(f_telephone.getText().substring(8,
-					f_telephone.getText().length()))) {
-				// enregistrement du fournisseur!!!
+			if (verifierNumeroTelephone(f_telephone.getText().substring(8))) {
 				if (fournisseurService.enregistrerFournisseur(
 						f_nom.getText(),
 						f_prenom.getText(),
-						f_telephone.getText().substring(8,
-								f_telephone.getText().length())) != null) {
-					/***
-					 * Si toutes les conditions sont reunies pour enregistrer le
-					 * fournisseur
-					 **/
+						f_telephone.getText().substring(8)) != null) {
 					fireNouveauFournisseur();
 					JOptionPane.showMessageDialog(null,
 							"Fournisseur enregistr� avec success",

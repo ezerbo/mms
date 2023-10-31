@@ -92,17 +92,12 @@ public class EnregistrementActeurExterne extends JDialog {
 				&& !telephone.substring(15, 16).equals("")
 				&& !telephone.substring(16, 17).equals("")) {
 			if (!telephone.equals("00-00-00-00")) {
-				if (!telephone.substring(0, 1).equals("0"))
+				if (telephone.charAt(0) != '0')
 					testeValue = true;
 			}
 
 		}
 
 		return testeValue;
-	}
-	public void reinitialiserChamps() {
-		f_nom.setText("");
-		f_prenom.setText("");
-		f_telephone.setText("");
 	}
 }

@@ -25,7 +25,7 @@ public class ClientListUI extends ActeurExterne implements ClientListener {
 	private final JButton newClientButton = new JButton("Nouveau client");
 
 	public ClientListUI() {
-		super("Clients enregistr\351s", "             fenetre donnant la liste de tous les clients");
+		super("Clients enregistrés", "fenêtre donnant la liste de tous les clients");
 		init();
 		registerEvents();
 	}
@@ -45,21 +45,21 @@ public class ClientListUI extends ActeurExterne implements ClientListener {
 	private void registerEvents() {
 		deleteClientButton.addActionListener(e -> {
 			int confirmationResult = JOptionPane.showConfirmDialog(null
-					, "Voulez-vous vraiment supprmier ce client ?"
+					, "Voulez-vous vraiment supprimer ce client ?"
 					, "Confirmation"
 					, JOptionPane.YES_NO_OPTION);
 			if (confirmationResult == JOptionPane.YES_OPTION) {
 				if (clientService.supprimerClient(getValue(COLONNETELEPHONE)) != 0) {
 					JOptionPane.showMessageDialog(null
-							, "Client supprimer avec succes"
-							, "Succes de l'operation"
+							, "Client supprimer avec succès"
+							, "Succès de l'opération"
 							, JOptionPane.INFORMATION_MESSAGE);
 					clientTableModel.delete(clientsTable.getSelectedRow());
 					return;
 				}
 				JOptionPane.showMessageDialog(null
 						, "Le client n'a pas pu etre supprime"
-						, "Echec de l'operation"
+						, "Échec de l'opération"
 						, JOptionPane.ERROR_MESSAGE);
 			}
 		});

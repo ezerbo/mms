@@ -74,7 +74,7 @@ public class AdminAuthUI extends JDialog {
 		} else {
 			JOptionPane.showMessageDialog(null
 					,"Mot de passe incorrect!"
-					, "Echec de l'authentification"
+					, "Échec de l'authentification"
 					, JOptionPane.ERROR_MESSAGE);
 		}
 	}

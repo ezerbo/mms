@@ -6,7 +6,7 @@ public class ComboBoxEditable extends JComboBox {
 	private boolean teste;
 
 	public ComboBoxEditable() {
-		this.setEditor(new EditeurCombo(this));
+		this.setEditor(new ComboEditor(this));
 		this.setEditable(true);
 		teste = true;
 	}
@@ -14,13 +14,6 @@ public class ComboBoxEditable extends JComboBox {
 	public void fireActionEvent() {
 		if (teste)
 			super.fireActionEvent();
-	}
-
-	/**
-	 * @return the teste
-	 */
-	public boolean isTeste() {
-		return teste;
 	}
 
 	/**

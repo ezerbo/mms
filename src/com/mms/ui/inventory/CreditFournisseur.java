@@ -51,24 +51,22 @@ public class CreditFournisseur extends JDialog {
 		b_fermer = new JButton("Fermer");
 		resultat = null;
 		setLayout(new BorderLayout());
-		setTitle("Liste des credits octroy\351s au clients");
+		setTitle("Liste des credits octroyés au clients");
 		panelCentre.setLayout(new BorderLayout());
-		panelBouton.setLayout(new FlowLayout(0));
+		panelBouton.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panelBouton.add(b_fermer);
-		label1 = new JLabel("    Credits fournisseur");
-		label2 = new JLabel(
-				"          fenetre donnant la liste des fournisseurs ");
+		label1 = new JLabel("Credits fournisseur");
+		label2 = new JLabel("fenêtre donnant la liste des fournisseurs ");
 		panelListeProduit = new JPanel();
 		panelListeProduit.setLayout(new BorderLayout());
 		panelNord = new JPanel();
 		panelTitle = new JPanel();
 		panelIcon = new JPanel();
-		label1.setFont(new Font("SansSerif", 2, 18));
-		label2.setFont(new Font("SansSerif", 2, 12));
-		panelIcon.setLayout(new FlowLayout(2));
+		label1.setFont(new Font("SansSerif", Font.ITALIC, 18));
+		label2.setFont(new Font("SansSerif", Font.ITALIC, 12));
+		panelIcon.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		panelIcon.setBackground(Color.WHITE);
-		panelIcon
-				.add(new JLabel(new ImageIcon("ressources/images/credit.jpg")));
+		panelIcon.add(new JLabel(new ImageIcon("ressources/images/credit.jpg")));
 		panelTitle.setLayout(new FlowLayout(0));
 		panelTitle.setBackground(Color.WHITE);
 		panelTitle.setLayout(new BorderLayout());
@@ -83,8 +81,7 @@ public class CreditFournisseur extends JDialog {
 		panelTable.add(new JScrollPane(tableCredit), "Center");
 		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelCentre, panelListeProduit);
 		add(splitPane, "Center");
-		splitPaneVertical = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-				panelTable, panelListeCredit);
+		splitPaneVertical = new JSplitPane(JSplitPane.VERTICAL_SPLIT, panelTable, panelListeCredit);
 		splitPaneVertical.setDividerLocation(250);
 		panelCentre.add(splitPaneVertical);
 		setSize(new Dimension(740, 520));
@@ -94,7 +91,6 @@ public class CreditFournisseur extends JDialog {
 		tableCredit.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) {
 			}
-
 		});
 		setModal(true);
 		setVisible(true);
