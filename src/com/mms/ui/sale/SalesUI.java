@@ -125,11 +125,11 @@ public class SalesUI extends JPanel implements VenteListener, ClientListener, Pr
         comboListeClient = new JComboBox<>();
         comboboxDesignation = new ComboBoxEditable();
         b_nouveauClient = new JButton("Nouveau client");
-        b_apercuFacture = new JButton("Aper�u de la facture");
+        b_apercuFacture = new JButton("Aperçu de la facture");
         b_enregistrer = new JButton("Enregistrer");
         itemSupprimerToutesLesLignes = new JMenuItem("Supprimer toutes les lignes");
         itemSupprimerToutesLesLignes.setEnabled(false);
-        itemSupprimerLigneSelectionnee = new JMenuItem("Supprimer la ligne selectionn�e");
+        itemSupprimerLigneSelectionnee = new JMenuItem("Supprimer la ligne sélectionnée");
         itemSupprimerLigneSelectionnee.setEnabled(false);
         itemAjouterLigne = new JMenuItem("Ajouter une nouvelle ligne");
         categorieService = new CategorieService();
@@ -138,7 +138,7 @@ public class SalesUI extends JPanel implements VenteListener, ClientListener, Pr
         userService = new UserService();
         nouveauClient = new NouveauClient();
         venteComptant = new JCheckBox("Vente au comptant");
-        venteCredit = new JCheckBox("Vente � cr�dit");
+        venteCredit = new JCheckBox("Vente à crédit");
 
         nouveauClient.addClientListener(this);
         tableModel = new TableModelVente();
@@ -317,7 +317,7 @@ public class SalesUI extends JPanel implements VenteListener, ClientListener, Pr
 
     private void afficheComposantTable() {
         table.getColumn("DESIGNATION").setCellEditor(new DefaultCellEditor(comboboxDesignation));
-        table.getColumn("QUANTITE").setCellEditor(new DefaultCellEditor(new TextFieldTable()));
+        table.getColumn("QUANTITÉ").setCellEditor(new DefaultCellEditor(new TextFieldTable()));
         table.getColumn("PRIX UNITAIRE H.T.").setCellEditor(new DefaultCellEditor(new TextFieldTable()));
         table.getColumn("TOTAL H.T.").setCellEditor(new DefaultCellEditor(new TextFieldTable()));
         table.getColumn("TAUX T.V.A").setCellEditor(new DefaultCellEditor(new TextFieldTable()));
@@ -365,10 +365,10 @@ public class SalesUI extends JPanel implements VenteListener, ClientListener, Pr
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(nouveauClient, "Verifier les differentes lignes de vente", "Erreur", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(nouveauClient, "Verifier les différentes lignes de vente", "Erreur", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(nouveauClient, "Aucune ligne de vente trouv�e", "Erreur", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(nouveauClient, "Aucune ligne de vente trouvée", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
 
     }

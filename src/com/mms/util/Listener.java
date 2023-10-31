@@ -7,23 +7,22 @@ import javax.swing.JLabel;
 
 public class Listener extends MouseAdapter {
 
-	JLabel comp;
-	String texteMouseEntered;
-	String texteMouseExited;
+	private final JLabel label;
+	private final String textOnMouseEntered;
+	private final String textOnMouseExited;
 
-	public Listener(JLabel comp, String texteMouseEntered,
-			String texteMouseExited) {
-		this.comp = comp;
-		this.texteMouseEntered = texteMouseEntered;
-		this.texteMouseExited = texteMouseExited;
-		comp.setCursor(Cursor.getPredefinedCursor(12));
+	public Listener(JLabel label, String textOnMouseEntered, String textOnMouseExited) {
+		this.label = label;
+		this.textOnMouseEntered = textOnMouseEntered;
+		this.textOnMouseExited = textOnMouseExited;
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		comp.setText(texteMouseEntered);
+		label.setText(textOnMouseEntered);
 	}
 
 	public void mouseExited(MouseEvent e) {
-		comp.setText(texteMouseExited);
+		label.setText(textOnMouseExited);
 	}
 }

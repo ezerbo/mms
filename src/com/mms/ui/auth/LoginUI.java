@@ -31,10 +31,6 @@ public class LoginUI extends JFrame {
         init();
     }
 
-    public static void main(String[] args) {
-       new LoginUI().setVisible(true);
-    }
-
     // TODO Use text fields with placeholders
     private void init() {
         getContentPane().setLayout(new BorderLayout(10, 10));
@@ -159,6 +155,10 @@ public class LoginUI extends JFrame {
 
     private String getPassword() {
         return String.valueOf(passwordField.getPassword());
+    }
+
+    public static void main(String[] args) {
+        new LoginUI().setVisible(true);
     }
 
 }

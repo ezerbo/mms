@@ -9,7 +9,7 @@ import java.awt.*;
 public class ConnectedUserPanel extends JPanel {
 
     private JToolBar connectedUserToolBar = new JToolBar();
-    private JLabel l_utilisateurConnecte = new JLabel("Utilisateur connect� : ");
+    private JLabel l_utilisateurConnecte = new JLabel("Utilisateur connecté : ");
 
     private JLabel l_nomUtilisateurConnecte;
 

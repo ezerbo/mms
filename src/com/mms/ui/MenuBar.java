@@ -58,9 +58,9 @@ public class MenuBar extends JMenuBar {
         itemListeFournisseur = new JMenuItem("Liste fournisseur");
         itemCreditFournisseur = new JMenuItem("Credits fournisseur");
         itemChangerIdentifiant = new JMenuItem("Modifier les identifiants");
-        itemActiviteUtilisateur = new JMenuItem("Voir les activit�s d'un utilisateur");
+        itemActiviteUtilisateur = new JMenuItem("Voir les activités d'un utilisateur");
         itemLogiciel = new JMenuItem("A propos du logiciels");
-        itemDeveloppeurs = new JMenuItem("Developpeurs");
+        itemDeveloppeurs = new JMenuItem("Développeurs");
         itemNouveauProduit = new JMenuItem("Nouveau produit");
         itemCatalogue = new JMenuItem("Catalogue des produits");
         itemInventaire = new JMenuItem("Inventaire des produits");

@@ -14,10 +14,14 @@ import com.mms.service.SalesService;
 
 public class TableModelVente extends AbstractTableModel {
 
-	protected static String[] entetLigneVente = {"DESIGNATION", "QUANTITE",
-			"PRIX UNITAIRE H.T.", "TOTAL H.T.", "TAUX T.V.A", "MONTANT TVA",
-			"TOTAL T.T.C."};// entete de la JTable
-	private LinkedList<LigneDeVente> ligneDeVente;// ligne de vente
+	protected static String[] entetLigneVente = {"DESIGNATION"
+			, "QUANTITÉ"
+			, "PRIX UNITAIRE H.T."
+			, "TOTAL H.T."
+			, "TAUX T.V.A"
+			, "MONTANT TVA"
+			, "TOTAL T.T.C."};
+	private final LinkedList<LigneDeVente> ligneDeVente;// ligne de vente
 	private static int COLONNEPRIXUNITAIRE = 2;
 	private static int COLONNETOTAL = 3;
 	private static int COLONNETAUXTVA = 4;
@@ -64,16 +68,12 @@ public class TableModelVente extends AbstractTableModel {
 	public Object getValueAt(int ligne, int colonne) {
 		switch (colonne) {
 			case 0 :
-				/** colonne des designations */
 				return ligneDeVente.get(ligne).getDesignation();
 			case 1 :
-				/** colonne des quantit�s */
 				return ligneDeVente.get(ligne).getQuantite();
 			case 2 :
-				/** colonne des prix unitaires */
 				return ligneDeVente.get(ligne).getPrixUnitaire();
 			case 3 :
-				/** colonne des totaux */
 				return ligneDeVente.get(ligne).getPrixGlobalHt();
 			case 4 :
 				return ligneDeVente.get(ligne).getTauxTva();
@@ -92,9 +92,6 @@ public class TableModelVente extends AbstractTableModel {
 	}
 
 	public void setValueAt(Object value, int ligne, int colonne) {
-		/**
-		 * definition des valeurs des lignes de vente
-		 */
 		switch (colonne) {
 			case 0 : {
 				String designation = (String) value;
@@ -143,9 +140,6 @@ public class TableModelVente extends AbstractTableModel {
 	}
 
 	public void supprimerLigne(int rowIndex) {
-		/**
-		 * permet de supprimer une ligne de vente
-		 */
 		ligneDeVente.remove(rowIndex);
 		fireTableRowsDeleted(rowIndex, rowIndex);
 	}

@@ -9,7 +9,7 @@ public class LeftPanesBox {
         leftPanesBox.add(new JLabel("    "));
         leftPanesBox.add(new SalesPane());
         leftPanesBox.add(new JLabel("    "));
-        leftPanesBox.add(new DeliveriesPane());
+        leftPanesBox.add(new InventoriesPane());
         leftPanesBox.add(new JLabel("    "));
         leftPanesBox.add(new ProductsPane());
         leftPanesBox.add(new JLabel("    "));

@@ -8,6 +8,6 @@ public class TabsPanel extends TabbedPanel {
     public TabsPanel() {
         getProperties().addSuperObject(new ShapedGradientTheme().getTabbedPanelProperties());
         addTab(new SalesTab());
-        addTab(new DeliveriesTab());
+        addTab(new InventoryTab());
     }
 }

@@ -54,10 +54,9 @@ public class InventoryUI extends JPanel implements FournisseurListener, ProduitL
 	/******************/
 	public InventoryUI() {
 		setLayout(new BorderLayout());
-		/*******/
 		panelNord = new JPanel();
 		panelSud = new JPanel();
-		comboListeFournisseur = new JComboBox();
+		comboListeFournisseur = new JComboBox<>();
 		panelComptabiliser = new JPanel();
 		taskPaneChoixFournisseur = new JTaskPaneGroup();
 		taskCompte = new JTaskPaneGroup();
@@ -66,15 +65,15 @@ public class InventoryUI extends JPanel implements FournisseurListener, ProduitL
 		popupMenu = new JPopupMenu();
 		itemAjouterLigneLivraison = new JMenuItem("Ajouter une nouvelle ligne");
 		itemSupprimerLigneLivraison = new JMenuItem(
-				"Supprimer la ligne selectionn�e");
+				"Supprimer la ligne sélectionnée");
 		itemSupprimerLigneLivraison.setEnabled(false);
 		itemSupprimerTouteLigneLivraison = new JMenuItem(
 				"Supprimer toutes les lignes");
 		itemSupprimerTouteLigneLivraison.setEnabled(false);
 
 		panelNord.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panelNord.add(new JLabel((new StringBuilder("Date :  ")).append(
-				(new GenereDate()).getDateCourante()).toString()));
+		panelNord.add(new JLabel("Date :  " +
+				(new GenereDate()).getDateCourante()));
 		panelSud.setLayout(new FlowLayout(FlowLayout.LEFT));
 		comboListeFournisseur.addItem("");
 		tableModel = new LivraisonTableModel();
@@ -115,22 +114,13 @@ public class InventoryUI extends JPanel implements FournisseurListener, ProduitL
 		itemAjouterLigneLivraison.addActionListener(arg0 -> {
 			tableModel.ajouterLignes();
 			if (tableModel.getRowCount() > 2) {
-				/**
-				 * si le nombre de ligne est superieure a celui par
-				 * defaut,on active les items de suppression
-				 */
 				itemSupprimerLigneLivraison.setEnabled(true);
 				itemSupprimerTouteLigneLivraison.setEnabled(true);
 			}
 		});
 		itemSupprimerLigneLivraison.addActionListener(arg0 -> {
 			tableModel.supprimerLigne(1);
-			/** le 1 est � remplacer avec l'index de l'element selectionn� **/
 			if (tableModel.getRowCount() == 2) {
-				/**
-				 * si le nombre de ligne est egale a celui par defaut,on
-				 * desactive les items de suppression
-				 */
 				itemSupprimerLigneLivraison.setEnabled(false);
 				itemSupprimerTouteLigneLivraison.setEnabled(false);
 			}
@@ -159,10 +149,6 @@ public class InventoryUI extends JPanel implements FournisseurListener, ProduitL
 		scrollPane.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent event) {
 				if (event.getClickCount() == 2) {
-					/**
-					 * si on double-clique sur le scrollPane contenant le
-					 * tableau,on ajoute une ligne a la table des livraisons
-					 */
 					tableModel.ajouterLignes();
 					if (tableModel.getRowCount() >= 2) {
 						itemSupprimerLigneLivraison.setEnabled(true);

@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -85,20 +83,13 @@ public class InfoUtilisateur extends JDialog {
 		add(panelOuest, BorderLayout.WEST);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
-		b_OK.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				dispose();
-			}
-		});
+		b_OK.addActionListener(e -> dispose());
 		pack();
 		setLocationRelativeTo(null);
 		setModal(true);
 		setVisible(true);
 	}
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		new InfoUtilisateur("kataston");
 	}
 }

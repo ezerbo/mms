@@ -180,7 +180,6 @@ public class PasswordRepository extends DaoGenerique<Password> {
 			if (resultat.next())
 				testeValue = true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return testeValue;

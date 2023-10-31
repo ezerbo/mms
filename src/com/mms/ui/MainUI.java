@@ -14,11 +14,9 @@ import com.mms.ui.common.CopyRight;
 import com.mms.ui.pane.LeftPanesBox;
 import com.mms.ui.tab.TabsPanel;
 
-import com.mms.domain.User;
 import com.mms.service.UserService;
 
 public class MainUI extends JFrame {
-	private final User loggedInUser = UserService.getLoggedInUser();
 
 	public MainUI() {
 		super("Market Management System 2.0");
@@ -28,7 +26,7 @@ public class MainUI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				new UserService().updateSession(loggedInUser.getIdutilisateur());
+				new UserService().updateSession(UserService.getLoggedInUser().getIdutilisateur());
 			}
 		});
 	}

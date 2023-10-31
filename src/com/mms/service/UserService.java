@@ -101,7 +101,7 @@ public class UserService {
         return userRepository.delete(User.builder().loginutilisateur(login).build());
     }
 
-    public boolean authentificationAdministrateur(String password) {
+    public boolean adminLogin(String password) {
         User user = userRepository.findAdmin();
         if (user != null) {
             return PasswordUtil.compare(passwordRepository.getAdminPassword(user.getIdutilisateur()), password);
